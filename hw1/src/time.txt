@@ -23,3 +23,21 @@ sys     2m37.788s
 (base) justin@LT480:/media/justin/sp/team-25/hw1/src$ 
 
 
+lance@lance-VirtualBox:~/cs553$ time ./sort-data.sh r100.txt sort100.txt
+Finish sorting. Outputfile - sort100.txt
+
+real	0m0.005s
+user	0m0.003s
+sys	0m0.000s
+lance@lance-VirtualBox:~/cs553$ time ./sort-data.sh r10000.txt sort10000.txt
+Finish sorting. Outputfile - sort10000.txt
+
+real	0m0.016s
+user	0m0.012s
+sys	0m0.002s
+lance@lance-VirtualBox:~/cs553$ time ./sort-data.sh r1000000.txt sort1000000.txt 
+Finish sorting. Outputfile - sort1000000.txt
+
+real	0m1.436s
+user	0m1.413s
+sys	0m0.639s

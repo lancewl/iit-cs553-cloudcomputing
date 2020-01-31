@@ -1,0 +1,25 @@
+
+(base) justin@LT480:/media/justin/sp/team-25/hw1/src$ time ./generate-dataset.sh
+ r100.txt 100
+File created, filename - "r100.txt" - (100)
+
+real    0m0.150s
+user    0m0.099s
+sys     0m0.060s
+
+(base) justin@LT480:/media/justin/sp/team-25/hw1/src$ time ./generate-dataset.sh r10000.txt 10000
+File created, filename - "r10000.txt" - (10000)
+
+real    0m7.166s
+user    0m6.085s
+sys     0m1.609s
+
+(base) justin@LT480:/media/justin/sp/team-25/hw1/src$ time ./generate-dataset.sh r100.txt 1000000
+File created, filename - "r1000000.txt" - (1000000)
+
+real    12m16.991s
+user    10m23.401s
+sys     2m37.788s
+(base) justin@LT480:/media/justin/sp/team-25/hw1/src$ 
+
+

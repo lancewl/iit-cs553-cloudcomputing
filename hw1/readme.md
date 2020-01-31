@@ -1,21 +1,38 @@
 # hw1 submission
 
-**Directory organization**
+## Directory Organization
 
 *The "src" folder contains the source code for question 3.*
 
-*The "doc" folder contains the written portion for question 1,2,3,4,5 and 6.*
+*The "doc" folder contains the report files.(in pdf and docx)*
 
 ```
 ./hw1
   |---src
   |    |---generate-dataset.sh
   |    |---sort-data.sh
+  |    |---graph.py
+  |    |---time.txt (run time log)
   |
   |---doc
-       |---hw1_q1(done).docx
-       |---hw1_q2(done).docx
-       |---hw1_q3a_results.docx
-       |---hw1_q4(done).docx
-       |---hw1_q5(done).docx
+       |---hw1_report_team25.pdf
+       |---hw1_report_team25.docx
 ```
+
+## Instructions
+
+Generate the data set:
+
+```
+./generate-dataset.sh [filename] [data scale]
+```
+
+Sort data set:
+
+```
+./sort-data.sh [input file] [output file]
+```
+
+Produce graph:
+
+Run the `graph.py` file. (It doesn't take any input. Need to modifiy the file to change the graph.)

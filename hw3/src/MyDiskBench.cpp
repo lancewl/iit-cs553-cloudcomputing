@@ -1,13 +1,12 @@
-#include <iostream>
-#include <fstream>
-#include <chrono>
+#include "MyDiskBench.h"
+#include "workload.h"
+
 
 using namespace std;
 using namespace std::chrono;
 
 #define dataSize 20*1024*1024
 #define recordSize 1024*1024
-
 
 int main(){
     ofstream file;
@@ -39,4 +38,6 @@ int main(){
     // To get the value of duration use the count()
     // member function on the duration object
     cout << "Time taken: " << (double) duration.count()/1000 << " seconds" << endl;
+    // calling a function from workload.cpp
+    workload::workload_test();
 }

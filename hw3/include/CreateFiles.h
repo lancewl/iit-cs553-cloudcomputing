@@ -1,3 +1,10 @@
-#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <chrono>
 
-int create_files(void);
+using namespace std;
+using namespace std::chrono;
+
+#define dataSize 20 * 1024 * 1024
+
+int create_files(int recordSize);

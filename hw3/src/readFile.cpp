@@ -9,8 +9,3 @@ namespace workload{
         return -1;   
     }
 }
-
-int main(){
-    workload::workload_test();
-    return 0;
-}

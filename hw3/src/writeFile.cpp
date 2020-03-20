@@ -8,12 +8,6 @@
 ...etc
 */
 
-
-int main(){
-    create_files(1024 * 1024);
-    return 0;
-}
-
 int create_files(int recordSize){
     ofstream file;
     file.rdbuf()->pubsetbuf(0, 0); //set the stream to not using a buffer(cache)

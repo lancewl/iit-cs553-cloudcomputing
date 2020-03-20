@@ -1,6 +1,6 @@
 #include "MyDiskBench.h"
-#include "Workload.h"
-#include "CreateFiles.h"
+#include "readFile.h"
+#include "writeFile.h"
 
 using namespace std;
 using namespace std::chrono;

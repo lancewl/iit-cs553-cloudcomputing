@@ -1,4 +1,4 @@
-#include "workload.h"
+#include "readFile.h"
 using namespace std;
 
 namespace workload{

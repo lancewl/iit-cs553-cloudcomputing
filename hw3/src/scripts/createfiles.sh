@@ -7,20 +7,20 @@ mkdir data
 cd data
 # D1
 mkdir D1; cd D1 
-dd if=/dev/zero of=1 bs=1GB count=10
+dd if=/dev/zero of=0 bs=1GB count=10
 cd ../
 
 # D2
 mkdir D2; cd D2
+dd if=/dev/zero of=0 bs=1GB count=5
 dd if=/dev/zero of=1 bs=1GB count=5
-dd if=/dev/zero of=2 bs=1GB count=5
 cd ../
 
 # D3
 mkdir D3; cd D3
 blocksize=500MB
 n=5
-for i in {1..4}
+for i in {0..3}
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -30,7 +30,7 @@ cd ../
 mkdir D4; cd D4
 blocksize=250MB
 n=5
-for i in {1..8}
+for i in {0..7}
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -40,7 +40,7 @@ cd ../
 mkdir D5; cd D5
 blocksize=833MB
 n=1
-for i in {1..8}
+for i in {0..11}
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -50,7 +50,7 @@ cd ../
 mkdir D6; cd D6
 blocksize=417MB
 n=1
-for i in {1..24}
+for i in {0..23}
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -60,7 +60,7 @@ cd ../
 mkdir D7; cd D7
 blocksize=208MB
 n=1
-for i in {1..48}
+for i in {0..47}
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done

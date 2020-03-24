@@ -4,9 +4,13 @@
 #include <fstream>
 #include <chrono>
 
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
 #include <thread>
 #include <pthread.h>
-#include <future>
 
 using namespace std;
 using namespace std::chrono;
@@ -36,5 +40,7 @@ namespace workload{
 
     int d7_rs();
     int d7_rr();
+
+    int open_d1_rs();
 
 }

@@ -2,7 +2,7 @@
 using namespace std;
 using namespace std::chrono;
 
-unsigned long recordSizes[] = {64000, 1000000, 16000000};
+unsigned long recordSizes[] = {64*1024, 1024*1024, 16*1024*1024};
 
 // I'm too lazy to deal with arguments passing.
 long d1_rs_results[3];
@@ -33,8 +33,6 @@ namespace workload{
         // run all the tests
         // D1
         d1_rs();
-
-        /*
         d1_rr();
         // read from D2, 2 threads 2 files
         d2_rs();
@@ -54,10 +52,10 @@ namespace workload{
         // D7, 48 threads
         d7_rs();
         d7_rr();
-        */
+        
         // TODO: calculate, and save results to a file
         // d1_rs_results are in milliseconds
-        double fileSize = 10000*1000; // in MB/s
+        double fileSize = 10*1000*1000; // in MB/s
         ofstream resultFile;
         // RS
         resultFile.open("RS_result.txt");
@@ -915,6 +913,30 @@ namespace workload{
         }
         // ----- ^^^TIME THIS CHUNK^^^ -----
         free(memblock);
+        return 0;
+    }
+
+    int open_d1_rs(){
+        unsigned long recordSize = 16*1024*1024; // 64KB, 1MB, 16MB(16000000) 
+        int fp = open("data/D1/0", O_RDONLY|O_DIRECT);
+        char * memblock;
+        // read from D1, 1
+        if(fp == -1){ fputs("File not found", stderr); exit(-1);}
+        memblock = (char *) aligned_alloc(4096, sizeof(char)*recordSize); // malloc'd memory does not work with O_DIRECT
+
+        auto start = high_resolution_clock::now();
+        
+        int i = 1;
+        while(i > 0){
+            i = read(fp, memblock, recordSize);
+            lseek(fp, recordSize, SEEK_CUR);
+        }
+        
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<milliseconds>(stop - start);
+        free(memblock);
+        close(fp);
+        durations[0] = duration.count();
         return 0;
     }
 }

@@ -1,10 +1,12 @@
 #include <iostream>
 #include <fstream>
 #include <chrono>
+#include <pthread.h>
 
 using namespace std;
 using namespace std::chrono;
 
-#define dataSize 20 * 1024 * 1024
+#define dataSize 1024* 1024
 
-int create_files(int recordSize);
+void *create_files(int recordSize, bool random);
+void thread_test(int threads, int recordSize, bool random);

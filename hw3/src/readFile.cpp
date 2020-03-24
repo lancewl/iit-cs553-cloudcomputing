@@ -33,6 +33,8 @@ namespace workload{
         // run all the tests
         // D1
         d1_rs();
+
+        /*
         d1_rr();
         // read from D2, 2 threads 2 files
         d2_rs();
@@ -52,8 +54,9 @@ namespace workload{
         // D7, 48 threads
         d7_rs();
         d7_rr();
-
+        */
         // TODO: calculate, and save results to a file
+        // d1_rs_results are in milliseconds
         double fileSize = 10000*1000; // in MB/s
         ofstream resultFile;
         // RS
@@ -115,11 +118,11 @@ namespace workload{
     int d1_rs(){
         char * memblock;
         unsigned long recordSize;
-        ifstream file;
-        file.rdbuf()->pubsetbuf(0, 0);
-
+        
         for(int i=0; i < 3; i++){
             recordSize = recordSizes[i];
+            fstream file;
+            file.rdbuf()->pubsetbuf(0, 0);
             file.open("data/D1/0");
             if(!file.is_open()){ printf("File err\n"); exit(-1);}
             file.seekg(0, ios::end);

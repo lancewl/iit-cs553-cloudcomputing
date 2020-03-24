@@ -14,4 +14,4 @@ writeFile.o: $(SRC_DIR)/writeFile.h
 
 .PHONY: clean
 clean:
-	rm *.o main
+	rm *.o main *.txt

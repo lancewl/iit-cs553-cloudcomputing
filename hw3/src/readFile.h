@@ -3,11 +3,38 @@
 #include <iostream>
 #include <fstream>
 #include <chrono>
+
+#include <thread>
+#include <pthread.h>
+#include <future>
+
 using namespace std;
 using namespace std::chrono;
 
 namespace workload{
     int workload_test();
-    int d1_rs(milliseconds *results);
-    int d1_rr(milliseconds *results);
+
+    void worker(int workerId, const string &filename, unsigned long recordSize, bool randFlag);
+    
+    int d1_rs();
+    int d1_rr();
+
+    int d2_rs();
+    int d2_rr();
+
+    int d3_rs();
+    int d3_rr();
+
+    int d4_rs();
+    int d4_rr();
+
+    int d5_rs();
+    int d5_rr();
+
+    int d6_rs();
+    int d6_rr();
+
+    int d7_rs();
+    int d7_rr();
+
 }

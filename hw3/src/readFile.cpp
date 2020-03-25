@@ -29,7 +29,7 @@ namespace workload{
         // workload types: RS, RR
         // sequential read, random read
         // save results to memory, and write it to "results.out" when the test is done.
-        
+        /*
         // run all the tests
         // D1
         d1_rs();
@@ -52,8 +52,11 @@ namespace workload{
         // D7, 48 threads
         d7_rs();
         d7_rr();
-        
-        // TODO: calculate, and save results to a file
+        */
+	open_d1_rs();
+        cout << durations[0] << endl;
+	cout << 10*1000*1000/(double)durations[0] << endl;
+	// TODO: calculate, and save results to a file
         // d1_rs_results are in milliseconds
         double fileSize = 10*1000*1000; // in MB/s
         ofstream resultFile;
@@ -917,22 +920,23 @@ namespace workload{
     }
 
     int open_d1_rs(){
-        unsigned long recordSize = 16*1024*1024; // 64KB, 1MB, 16MB(16000000) 
+        unsigned long recordSize = 1024*1024;  // 64k, 1mb, 16mb 
         int fp = open("data/D1/0", O_RDONLY|O_DIRECT);
         char * memblock;
         // read from D1, 1
         if(fp == -1){ fputs("File not found", stderr); exit(-1);}
         memblock = (char *) aligned_alloc(4096, sizeof(char)*recordSize); // malloc'd memory does not work with O_DIRECT
-
+	
         auto start = high_resolution_clock::now();
         
-        int i = 1;
+	int i = 1;
         while(i > 0){
             i = read(fp, memblock, recordSize);
             lseek(fp, recordSize, SEEK_CUR);
+	    // cout << i << endl;
         }
         
-        auto stop = high_resolution_clock::now();
+	auto stop = high_resolution_clock::now();
         auto duration = duration_cast<milliseconds>(stop - start);
         free(memblock);
         close(fp);

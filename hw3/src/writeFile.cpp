@@ -48,7 +48,7 @@ void *create_files(void *threadarg)
     
 }
 
-void write_bench(int num_threads, int recordSize, bool random)
+void write_bench(int num_threads, long recordSize, bool random)
 {
     int rc;
     int i;

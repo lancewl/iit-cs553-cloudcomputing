@@ -8,5 +8,6 @@ using namespace std::chrono;
 int main(){
     write_bench(1, 64 * 1024, true);
     // calling a function from workload.cpp
-    //workload::workload_test();
+    workload::workload_test();
+    return 0;
 }

@@ -2,6 +2,7 @@
 using namespace std;
 using namespace std::chrono;
 
+#define ALIGN_BYTES 4096
 unsigned long recordSizes[] = {64*1024, 1024*1024, 16*1024*1024};
 
 // I'm too lazy to deal with arguments passing.
@@ -53,8 +54,9 @@ namespace workload{
         d7_rs();
         d7_rr();
         
-        // TODO: calculate, and save results to a file
+	    // TODO: calculate, and save results to a file
         // d1_rs_results are in milliseconds
+
         double fileSize = 10*1000*1000; // in MB/s
         ofstream resultFile;
         // RS
@@ -119,30 +121,25 @@ namespace workload{
         
         for(int i=0; i < 3; i++){
             recordSize = recordSizes[i];
-            fstream file;
-            file.rdbuf()->pubsetbuf(0, 0);
-            file.open("data/D1/0");
-            if(!file.is_open()){ printf("File err\n"); exit(-1);}
-            file.seekg(0, ios::end);
-            unsigned long fileSize = file.tellg();
-            file.seekg(0, ios::beg);
-            memblock = new char[recordSize];
-
+            int fp = open("data/D1/0", O_RDONLY|O_DIRECT);
+            // read from D1, 1
+            if(fp == -1){ fputs("File not found", stderr); exit(-1);}
+            memblock = (char *) aligned_alloc(ALIGN_BYTES, sizeof(char)*recordSize); // malloc'd memory does not work with O_DIRECT
+        
             auto start = high_resolution_clock::now();
-            // ----- vvvTIME THIS CHUNKvvv -----
-            while((unsigned long)file.tellg()+recordSize < fileSize){
-                file.read(memblock, recordSize);
+            
+            int n = 1;
+            while(n > 0){
+                n = read(fp, memblock, recordSize);
+                lseek(fp, recordSize, SEEK_CUR);
             }
-            long rem = fileSize - file.tellg();
-            if(rem > 0){
-                file.read(memblock, rem);
-            }
-            // ----- ^^^TIME THIS CHUNK^^^ -----
+                
             auto stop = high_resolution_clock::now();
             auto duration = duration_cast<milliseconds>(stop - start);
-            delete[] memblock;
-            file.close();
+            free(memblock);
+            close(fp);
             // save the result to the array
+            cout << "(D1_RS)recordSize " << recordSize << " done. " << endl;
             d1_rs_results[i] = duration.count();
         }
         return 0;
@@ -150,36 +147,36 @@ namespace workload{
     int d1_rr(){
         char * memblock;
         unsigned long recordSize;
-        ifstream file;
-        file.rdbuf()->pubsetbuf(0, 0);
 
         for(int i=0; i < 3; i++){
             recordSize = recordSizes[i];
-            file.open("data/D1/0");
-            if(!file.is_open()){ printf("File err\n"); exit(-1);}
-            file.seekg(0, ios::end);
-            unsigned long fileSize = file.tellg();
-            file.seekg(0, ios::beg);
-            memblock = new char[recordSize];
-            // create a list of random positions
-            long numPos = fileSize/recordSize;
-            long posRange = fileSize-recordSize; // make sure it doesn't reach eof
+
+            int fp = open("data/D1/0", O_RDONLY|O_DIRECT);
+            // read from D1, 0
+            if(fp == -1){ fputs("File not found", stderr); exit(-1);}
+            memblock = (char *) aligned_alloc(ALIGN_BYTES, sizeof(char)*recordSize); // malloc'd memory does not work with O_DIRECT
+
+            unsigned long fileSize = lseek(fp, 0, SEEK_END);
+            unsigned long numPos = fileSize/recordSize;
+            unsigned long posRange = fileSize-recordSize; // make sure it doesn't reach eof
             unsigned long posList[numPos];
-            for(int i=0; i<numPos; i++){
+            unsigned long rem;
+            for(long i=0; i<(long)numPos; i++){
                 posList[i] = (unsigned long)rand()%posRange;
+                rem = posList[i]%ALIGN_BYTES;
+                posList[i] = posList[i] - rem;
             }
+
             auto start = high_resolution_clock::now();
-            // ----- vvvTIME THIS CHUNKvvv -----
             for(unsigned long pos: posList){
-                file.seekg(pos); // seek to a random-ish position
-                file.read(memblock, recordSize); // and read the block
+                lseek(fp, pos, SEEK_SET); // seek to random position
+                read(fp, memblock, recordSize); // read a block
             }
-            // ----- ^^^TIME THIS CHUNK^^^ -----
             auto stop = high_resolution_clock::now();
             auto duration = duration_cast<milliseconds>(stop - start);
-            // cleanup
-            delete[] memblock;
-            file.close();
+            free(memblock);
+            close(fp);    
+            
             // save the result to the array
             cout << "(D1_RR)recordSize " << recordSize << " done. " << endl;
             d1_rr_results[i] = duration.count();
@@ -826,63 +823,55 @@ namespace workload{
     }
 
     void worker(int workerId, const string &filename, unsigned long recordSize, bool randFlag){
+        const char * fn = filename.c_str();
         if(!randFlag){ // rs
             char * memblock;
-            ifstream file;
-            file.rdbuf()->pubsetbuf(0, 0);
-            file.open(filename);
-            if(!file.is_open()){ 
-                printf("worker%d File err\n", workerId); 
-                exit(-1);
-            }
-            file.seekg(0, ios::end);
-            unsigned long fileSize = file.tellg();
-            file.seekg(0, ios::beg);
-            memblock = new char[recordSize];
-
+            int fp = open(fn, O_RDONLY|O_DIRECT);
+            // read from D1, 1
+            if(fp == -1){ fputs("File not found", stderr); exit(-1);}
+            memblock = (char *) aligned_alloc(ALIGN_BYTES, sizeof(char)*recordSize); // malloc'd memory does not work with O_DIRECT
+        
             auto start = high_resolution_clock::now();
-            // ----- vvvTIME THIS CHUNKvvv -----
-            while((unsigned long)file.tellg()+recordSize < fileSize){
-                file.read(memblock, recordSize);
+            
+            int n = 1;
+            while(n > 0){
+                n = read(fp, memblock, recordSize);
+                lseek(fp, recordSize, SEEK_CUR);
             }
-            long rem = fileSize - file.tellg();
-            if(rem > 0){
-                file.read(memblock, rem);
-            }
-            // ----- ^^^TIME THIS CHUNK^^^ -----
+                
             auto stop = high_resolution_clock::now();
             auto duration = duration_cast<milliseconds>(stop - start);
-            delete[] memblock;
-            file.close();
+            free(memblock);
+            close(fp);
             // save the result to a temporary array
             durations[workerId] = duration.count();
         }else{ // rr
             char * memblock;
-            ifstream file;
-            file.rdbuf()->pubsetbuf(0, 0);
-            file.open(filename);
-            if(!file.is_open()){ printf("File err\n"); exit(-1);}
-            file.seekg(0, ios::end);
-            unsigned long fileSize = file.tellg();
-            file.seekg(0, ios::beg);
-            memblock = new char[recordSize];
-            long numPos = fileSize/recordSize;
-            long posRange = fileSize-recordSize; // make sure it doesn't reach eof
+            int fp = open(fn, O_RDONLY|O_DIRECT);
+            // read from D1, 0
+            if(fp == -1){ fputs("File not found", stderr); exit(-1);}
+            memblock = (char *) aligned_alloc(ALIGN_BYTES, sizeof(char)*recordSize); // malloc'd memory does not work with O_DIRECT
+
+            unsigned long fileSize = lseek(fp, 0, SEEK_END);
+            unsigned long numPos = fileSize/recordSize;
+            unsigned long posRange = fileSize-recordSize; // make sure it doesn't reach eof
             unsigned long posList[numPos];
-            for(int i=0; i<numPos; i++){
+            unsigned long rem;
+            for(long i=0; i<(long)numPos; i++){
                 posList[i] = (unsigned long)rand()%posRange;
+                rem = posList[i]%ALIGN_BYTES;
+                posList[i] = posList[i] - rem;
             }
+
             auto start = high_resolution_clock::now();
-            // ----- vvvTIME THIS CHUNKvvv -----
             for(unsigned long pos: posList){
-                file.seekg(pos); // seek to a random-ish position
-                file.read(memblock, recordSize); // and read the block
+                lseek(fp, pos, SEEK_SET); // seek to random position
+                read(fp, memblock, recordSize); // read a block
             }
-            // ----- ^^^TIME THIS CHUNK^^^ -----
             auto stop = high_resolution_clock::now();
             auto duration = duration_cast<milliseconds>(stop - start);
-            delete[] memblock;
-            file.close();
+            free(memblock);
+            close(fp);    
             // save the result to a temporary array
             durations[workerId] = duration.count();
         }
@@ -917,21 +906,22 @@ namespace workload{
     }
 
     int open_d1_rs(){
-        unsigned long recordSize = 16*1024*1024; // 64KB, 1MB, 16MB(16000000) 
+        unsigned long recordSize = 1024*1024;  // 64k, 1mb, 16mb 
         int fp = open("data/D1/0", O_RDONLY|O_DIRECT);
         char * memblock;
         // read from D1, 1
         if(fp == -1){ fputs("File not found", stderr); exit(-1);}
         memblock = (char *) aligned_alloc(4096, sizeof(char)*recordSize); // malloc'd memory does not work with O_DIRECT
-
+	
         auto start = high_resolution_clock::now();
         
         int i = 1;
         while(i > 0){
             i = read(fp, memblock, recordSize);
             lseek(fp, recordSize, SEEK_CUR);
+        // cout << i << endl;
         }
-        
+            
         auto stop = high_resolution_clock::now();
         auto duration = duration_cast<milliseconds>(stop - start);
         free(memblock);

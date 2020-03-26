@@ -6,7 +6,7 @@ using namespace std;
 using namespace std::chrono;
 
 int main(){
-    // thread_test(2, 1024 * 1024, true);
+    write_bench(1, 64 * 1024, true);
     // calling a function from workload.cpp
-    workload::workload_test();
+    //workload::workload_test();
 }

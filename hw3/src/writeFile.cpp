@@ -30,7 +30,7 @@ void *create_files(void *threadarg)
 
     string text;
     
-    for (int i = 1; i <= dataSize; i++)
+    for (long i = 1; i <= dataSize; i++)
     {
         if (td->random)
             file.seekp(16, ios::cur); //random access
@@ -48,7 +48,7 @@ void *create_files(void *threadarg)
     
 }
 
-void thread_test(int num_threads, int recordSize, bool random)
+void write_bench(int num_threads, int recordSize, bool random)
 {
     int rc;
     int i;

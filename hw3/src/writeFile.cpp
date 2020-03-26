@@ -19,6 +19,7 @@ void *create_files(void *threadarg)
     struct thread_data *td;
     td = (struct thread_data *)threadarg;
     string filename = "dataset-" + to_string(td->thread_id) + ".txt";
+    long long dataSize = 10737418240;
 
     ofstream file;
     file.rdbuf()->pubsetbuf(0, 0); //set the stream to not using a buffer(cache)
@@ -30,7 +31,7 @@ void *create_files(void *threadarg)
 
     string text;
     
-    for (long i = 1; i <= dataSize; i++)
+    for (long long i = 1; i <= dataSize; i++)
     {
         if (td->random)
             file.seekp(16, ios::cur); //random access

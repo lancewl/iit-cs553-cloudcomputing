@@ -10,7 +10,7 @@
 struct thread_data
 {
     int thread_id;
-    int recordSize; 
+    long recordSize; 
     bool random;
 };
 

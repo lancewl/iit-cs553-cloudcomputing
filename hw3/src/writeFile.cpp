@@ -11,6 +11,7 @@ struct thread_data
 {
     int thread_id;
     long recordSize; 
+    long long fileSize;
     bool random;
 };
 
@@ -19,7 +20,6 @@ void *create_files(void *threadarg)
     struct thread_data *td;
     td = (struct thread_data *)threadarg;
     string filename = "dataset-" + to_string(td->thread_id) + ".txt";
-    long long dataSize = 10737418240;
 
     ofstream file;
     file.rdbuf()->pubsetbuf(0, 0); //set the stream to not using a buffer(cache)
@@ -29,30 +29,21 @@ void *create_files(void *threadarg)
         cout << "Error in creating file.\n";
     }
 
-    string text;
-    
-    for (long long i = 1; i <= dataSize; i++)
-    {
-        if (td->random)
-            file.seekp(16, ios::cur); //random access
-        if (i % td->recordSize == 0)
-        {
-            text += "\n";
-            file << text;
-            text = "";
-        }
-        else
-        {
-            text += "a";
-        }
+    string record;
+    for(int i = 0; i <= td->recordSize; i++){
+        record += "a";
     }
-    
+    for(int i = 0; i < td->fileSize / td->recordSize; i++){
+        file << record;
+    }
 }
 
 void write_bench(int num_threads, long recordSize, bool random)
 {
     int rc;
     int i;
+    long long total_data = 10737418240; //10GB
+    long long fileSize = total_data/num_threads;
     pthread_t threads[num_threads];
     pthread_attr_t attr;
     void *status;
@@ -69,6 +60,7 @@ void write_bench(int num_threads, long recordSize, bool random)
         cout << "main() : creating thread, " << i << endl;
         td[i].thread_id = i;
         td[i].recordSize = recordSize;
+        td[i].fileSize = fileSize;
         td[i].random = random;
         rc = pthread_create(&threads[i], &attr, create_files, (void *)&td[i]);
         if (rc)
@@ -100,4 +92,14 @@ void write_bench(int num_threads, long recordSize, bool random)
     // To get the value of duration use the count()
     // member function on the duration object
     cout << "Time taken: " << (double)duration.count() / 1000 << " seconds" << endl;
+}
+
+void debug_bench(int num_threads, long recordSize, bool random){
+    long long dataSize = 10737418240;
+    //long int dataSize = 107374182;
+    struct thread_data td;
+    td.thread_id = 0;
+    td.recordSize = recordSize;
+    td.random = random;
+    create_files(&td);
 }

@@ -2,7 +2,7 @@
 
 for workload in RS RR
 do 
-    if [["$workload" == "RS"]]
+    if [[ "$workload" == "RS" ]]
     then 
         workload=1
     else

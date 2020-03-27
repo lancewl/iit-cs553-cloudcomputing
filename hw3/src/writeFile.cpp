@@ -23,7 +23,7 @@ void *create_files(void *threadarg)
 
     ofstream file;
     file.rdbuf()->pubsetbuf(0, 0); //set the stream to not using a buffer(cache)
-    file.open(filename);
+    file.open(filename.c_str());
     if (!file)
     {
         cout << "Error in creating file.\n";
@@ -36,7 +36,6 @@ void *create_files(void *threadarg)
     for(int i = 0; i < td->fileSize / td->recordSize; i++){
         file << record;
     }
-    file.flush();
     file.close();
 }
 

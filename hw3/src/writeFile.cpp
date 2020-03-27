@@ -36,6 +36,8 @@ void *create_files(void *threadarg)
     for(int i = 0; i < td->fileSize / td->recordSize; i++){
         file << record;
     }
+    file.flush();
+    file.close();
 }
 
 void write_bench(int num_threads, long recordSize, bool random)

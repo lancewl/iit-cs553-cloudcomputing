@@ -1,0 +1,84 @@
+WS => Threads: 1 Record Size: 65536
+Time taken: 116.328 seconds
+WR => Threads: 1 Record Size: 65536
+Time taken: 122.34 seconds
+WS => Threads: 2 Record Size: 65536
+Time taken: 131.818 seconds
+WR => Threads: 2 Record Size: 65536
+Time taken: 134.894 seconds
+WS => Threads: 4 Record Size: 65536
+Time taken: 132.133 seconds
+WR => Threads: 4 Record Size: 65536
+Time taken: 140.118 seconds
+WS => Threads: 8 Record Size: 65536
+Time taken: 134.911 seconds
+WR => Threads: 8 Record Size: 65536
+Time taken: 144.108 seconds
+WS => Threads: 12 Record Size: 65536
+Time taken: 146.436 seconds
+WR => Threads: 12 Record Size: 65536
+Time taken: 154.494 seconds
+WS => Threads: 24 Record Size: 65536
+Time taken: 158.979 seconds
+WR => Threads: 24 Record Size: 65536
+Time taken: 163.909 seconds
+WS => Threads: 48 Record Size: 65536
+Time taken: 181.096 seconds
+WR => Threads: 48 Record Size: 65536
+Time taken: 175.72 seconds
+WS => Threads: 1 Record Size: 1048576
+Time taken: 107.392 seconds
+WR => Threads: 1 Record Size: 1048576
+Time taken: 112.036 seconds
+WS => Threads: 2 Record Size: 1048576
+Time taken: 118.76 seconds
+WR => Threads: 2 Record Size: 1048576
+Time taken: 122.47 seconds
+WS => Threads: 4 Record Size: 1048576
+Time taken: 117.648 seconds
+WR => Threads: 4 Record Size: 1048576
+Time taken: 125.755 seconds
+WS => Threads: 8 Record Size: 1048576
+Time taken: 121.55 seconds
+WR => Threads: 8 Record Size: 1048576
+Time taken: 124.733 seconds
+WS => Threads: 12 Record Size: 1048576
+Time taken: 123.84 seconds
+WR => Threads: 12 Record Size: 1048576
+Time taken: 127.622 seconds
+WS => Threads: 24 Record Size: 1048576
+Time taken: 125.581 seconds
+WR => Threads: 24 Record Size: 1048576
+Time taken: 132.523 seconds
+WS => Threads: 48 Record Size: 1048576
+Time taken: 134.894 seconds
+WR => Threads: 48 Record Size: 1048576
+Time taken: 140.115 seconds
+WS => Threads: 1 Record Size: 16777216
+Time taken: 153.728 seconds
+WR => Threads: 1 Record Size: 16777216
+Time taken: 158.5 seconds
+WS => Threads: 2 Record Size: 16777216
+Time taken: 171.874 seconds
+WR => Threads: 2 Record Size: 16777216
+Time taken: 176.517 seconds
+WS => Threads: 4 Record Size: 16777216
+Time taken: 195.492 seconds
+WR => Threads: 4 Record Size: 16777216
+Time taken: 179.559 seconds
+WS => Threads: 8 Record Size: 16777216
+Time taken: 111.952 seconds
+WR => Threads: 8 Record Size: 16777216
+Time taken: 112.396 seconds
+WS => Threads: 12 Record Size: 16777216
+Time taken: 112.794 seconds
+WR => Threads: 12 Record Size: 16777216
+Time taken: 107.516 seconds
+WS => Threads: 24 Record Size: 16777216
+Time taken: 111.915 seconds
+WR => Threads: 24 Record Size: 16777216
+Time taken: 113.553 seconds
+WS => Threads: 48 Record Size: 16777216
+Time taken: 113.059 seconds
+WR => Threads: 48 Record Size: 16777216
+Time taken: 115.817 seconds

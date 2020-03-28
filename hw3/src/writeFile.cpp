@@ -100,7 +100,7 @@ void write_bench(int num_threads, long recordSize, bool random, bool debug)
     auto duration = duration_cast<milliseconds>(stop - start);
     double sec = (double)duration.count() / 1000;
     cout << "Time taken: " << sec << " seconds" << endl;
-    cout << "Throughput: " << total_data/1024/sec << " MB/sec" << endl;
+    cout << "Throughput: " << total_data/1024/1024/sec << " MB/sec" << endl;
 }
 
 void debug_bench(int num_threads, long recordSize, bool random)

@@ -10,7 +10,7 @@
 struct thread_data
 {
     int thread_id;
-    long recordSize; 
+    long recordSize;
     long long fileSize;
     bool random;
 };
@@ -33,21 +33,23 @@ void *create_files(void *threadarg)
     }
 
     string record;
-    for(int i = 0; i <= td->recordSize; i++){
+    for (int i = 0; i <= td->recordSize; i++)
+    {
         record += "a";
     }
-    for(int i = 0; i < td->fileSize / td->recordSize; i++){
+    for (int i = 0; i < td->fileSize / td->recordSize; i++)
+    {
         file << record;
     }
     pthread_exit(NULL);
 }
 
-void write_bench(int num_threads, long recordSize, bool random)
+void write_bench(int num_threads, long recordSize, bool random, bool debug)
 {
     int rc;
     int i;
     long long total_data = 10737418240; //10GB
-    long long fileSize = total_data/num_threads;
+    long long fileSize = total_data / num_threads;
     pthread_t threads[num_threads];
     pthread_attr_t attr;
     void *status;
@@ -61,7 +63,8 @@ void write_bench(int num_threads, long recordSize, bool random)
 
     for (i = 0; i < num_threads; i++)
     {
-        cout << "main() : creating thread, " << i << endl;
+        if (debug)
+            cout << "main() : creating thread, " << i << endl;
         td[i].thread_id = i;
         td[i].recordSize = recordSize;
         td[i].fileSize = fileSize;
@@ -84,21 +87,22 @@ void write_bench(int num_threads, long recordSize, bool random)
             cout << "Error:unable to join," << rc << endl;
             exit(-1);
         }
-        cout << "Main: completed thread id :" << i;
-        cout << "  exiting with status :" << status << endl;
+        if (debug)
+        {
+            cout << "Main: completed thread id :" << i;
+            cout << "  exiting with status :" << status << endl;
+        }
     }
-
-    //cout << "Main: program exiting." << endl;
-    //pthread_exit(NULL);
+    if(debug)
+        cout << "Main: program exiting." << endl;
+    
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start);
-
-    // To get the value of duration use the count()
-    // member function on the duration object
     cout << "Time taken: " << (double)duration.count() / 1000 << " seconds" << endl;
 }
 
-void debug_bench(int num_threads, long recordSize, bool random){
+void debug_bench(int num_threads, long recordSize, bool random)
+{
     //long long dataSize = 10737418240;
     //long int dataSize = 107374182;
     struct thread_data td;

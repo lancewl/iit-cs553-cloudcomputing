@@ -24,6 +24,9 @@ void *create_files(void *threadarg)
     ofstream file;
     file.rdbuf()->pubsetbuf(0, 0); //set the stream to not using a buffer(cache)
     file.open(filename.c_str());
+    file << "/n";
+    file.close();
+    file.open(filename.c_str());
     if (!file)
     {
         cout << "Error in creating file.\n";
@@ -36,7 +39,7 @@ void *create_files(void *threadarg)
     for(int i = 0; i < td->fileSize / td->recordSize; i++){
         file << record;
     }
-    file.close();
+    pthread_exit(NULL);
 }
 
 void write_bench(int num_threads, long recordSize, bool random)
@@ -96,7 +99,7 @@ void write_bench(int num_threads, long recordSize, bool random)
 }
 
 void debug_bench(int num_threads, long recordSize, bool random){
-    long long dataSize = 10737418240;
+    //long long dataSize = 10737418240;
     //long int dataSize = 107374182;
     struct thread_data td;
     td.thread_id = 0;

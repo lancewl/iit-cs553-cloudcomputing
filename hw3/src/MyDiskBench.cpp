@@ -12,9 +12,9 @@ int main(){
     {
         for (int j = 0; j < 7; j++)
         {
-            cout << "WS => Threads: " << concurrency[j] << " Record Size: " << recordSize[i] << "\n";
+            cout << "WS => Threads: " << concurrency[j] << " Record Size: " << recordSize[i] << endl;
             write_bench(concurrency[j], recordSize[i], false, false);
-            cout << "WR => Threads: " << concurrency[j] << " Record Size: " << recordSize[i] << "\n";
+            cout << "WR => Threads: " << concurrency[j] << " Record Size: " << recordSize[i] << endl;
             write_bench(concurrency[j], recordSize[i], true, false);
         }
     }

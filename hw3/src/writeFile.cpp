@@ -102,14 +102,3 @@ void write_bench(int num_threads, long recordSize, bool random, bool debug)
     //cout << "|Time taken: " << sec << " seconds" << endl;
     cout << "|Throughput: " << total_data/1024/1024/sec << " MB/sec" << endl;
 }
-
-void debug_bench(int num_threads, long recordSize, bool random)
-{
-    //long long dataSize = 10737418240;
-    //long int dataSize = 107374182;
-    struct thread_data td;
-    td.thread_id = 0;
-    td.recordSize = recordSize;
-    td.random = random;
-    create_files(&td);
-}

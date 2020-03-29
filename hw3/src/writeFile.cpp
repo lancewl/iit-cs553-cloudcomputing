@@ -1,12 +1,4 @@
 #include "writeFile.h"
-
-// TODO: part 1b, create the files in directories D1 to D7.
-/*
-~/.../team-25/hw3/src/data/D1
-~/.../team-25/hw3/src/data/D2
-~/.../team-25/hw3/src/data/D3
-...etc
-*/
 struct thread_data
 {
     int thread_id;
@@ -39,6 +31,8 @@ void *create_files(void *threadarg)
     }
     for (int i = 0; i < td->fileSize / td->recordSize; i++)
     {
+        if (td->random)
+            file.seekp(8, ios::cur); //random access
         file << record;
     }
     pthread_exit(NULL);

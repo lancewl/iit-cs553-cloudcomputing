@@ -44,11 +44,10 @@ void *create_files(void *threadarg)
     pthread_exit(NULL);
 }
 
-void write_bench(int num_threads, long recordSize, bool random, bool debug)
+void write_bench(long long total_data, int num_threads, long recordSize, bool random, bool iops, bool debug)
 {
     int rc;
-    int i;
-    long long total_data = 10737418240; //10GB
+    int i;//10GB
     long long fileSize = total_data / num_threads;
     pthread_t threads[num_threads];
     pthread_attr_t attr;
@@ -93,12 +92,15 @@ void write_bench(int num_threads, long recordSize, bool random, bool debug)
             cout << "  exiting with status :" << status << endl;
         }
     }
-    if(debug)
+    if (debug)
         cout << "Main: program exiting." << endl;
-    
+
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(stop - start);
     double sec = (double)duration.count() / 1000;
     //cout << "|Time taken: " << sec << " seconds" << endl;
-    cout << "|Throughput: " << total_data/1024/1024/sec << " MB/sec" << endl;
+    if (iops)
+        cout << "|Throughput: " << total_data / recordSize / sec << " OPS/sec" << endl;
+    else
+        cout << "|Throughput: " << total_data / 1024 / 1024 / sec << " MB/sec" << endl;
 }

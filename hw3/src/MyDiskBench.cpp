@@ -16,7 +16,7 @@ int main()
     for (int j = 0; j < 7; j++)
     {
         cout << concurrency[j] << "    4KB    ";
-        write_bench(10737418, concurrency [j], 4096, true, true, false);
+        write_bench(1073741824, concurrency [j], 4096, true, true, false);
     }
     for (int k = 0; k < 2; k++)
     {
@@ -31,7 +31,7 @@ int main()
             for (int i = 0; i < 3; i++)
             {
                 cout << concurrency[j] << "    " << recordSize[i] << "    ";
-                write_bench(10737418, concurrency [j], recordSize[i], workload[k], false, false);
+                write_bench(10737418240, concurrency [j], recordSize[i], workload[k], false, false);
             }
         }
     }

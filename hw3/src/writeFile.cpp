@@ -1,12 +1,4 @@
 #include "writeFile.h"
-
-// TODO: part 1b, create the files in directories D1 to D7.
-/*
-~/.../team-25/hw3/src/data/D1
-~/.../team-25/hw3/src/data/D2
-~/.../team-25/hw3/src/data/D3
-...etc
-*/
 struct thread_data
 {
     int thread_id;
@@ -39,6 +31,8 @@ void *create_files(void *threadarg)
     }
     for (int i = 0; i < td->fileSize / td->recordSize; i++)
     {
+        if (td->random)
+            file.seekp(8, ios::cur); //random access
         file << record;
     }
     pthread_exit(NULL);
@@ -100,7 +94,7 @@ void write_bench(long long total_data, int num_threads, long recordSize, bool ra
     double sec = (double)duration.count() / 1000;
     //cout << "|Time taken: " << sec << " seconds" << endl;
     if (iops)
-        cout << "|Throughput: " << total_data / recordSize / sec << " OPS/sec" << endl;
+        cout << total_data / recordSize / sec  << endl;
     else
-        cout << "|Throughput: " << total_data / 1024 / 1024 / sec << " MB/sec" << endl;
+        cout << total_data / 1024 / 1024 / sec << endl;
 }

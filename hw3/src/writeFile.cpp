@@ -94,7 +94,7 @@ void write_bench(long long total_data, int num_threads, long recordSize, bool ra
     double sec = (double)duration.count() / 1000;
     //cout << "|Time taken: " << sec << " seconds" << endl;
     if (iops)
-        cout << "|Throughput: " << total_data / recordSize / sec << " OPS/sec" << endl;
+        cout << total_data / recordSize / sec  << endl;
     else
-        cout << "|Throughput: " << total_data / 1024 / 1024 / sec << " MB/sec" << endl;
+        cout << total_data / 1024 / 1024 / sec << endl;
 }

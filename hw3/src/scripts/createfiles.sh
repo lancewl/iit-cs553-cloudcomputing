@@ -22,7 +22,7 @@ cd ../
 mkdir D3; cd D3
 blocksize=500MB
 n=5
-for i in {0..3}
+for (( i=0; i<=3; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -32,7 +32,7 @@ cd ../
 mkdir D4; cd D4
 blocksize=250MB
 n=5
-for i in {0..7}
+for (( i=0; i<=7; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -42,7 +42,7 @@ cd ../
 mkdir D5; cd D5
 blocksize=833MB
 n=1
-for i in {0..11}
+for (( i=0; i<=11; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -52,7 +52,7 @@ cd ../
 mkdir D6; cd D6
 blocksize=417MB
 n=1
-for i in {0..23}
+for (( i=0; i<=23; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -62,7 +62,7 @@ cd ../
 mkdir D7; cd D7
 blocksize=208MB
 n=1
-for i in {0..47}
+for (( i=0; i<=47; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -89,7 +89,7 @@ cd ../
 mkdir D3; cd D3
 blocksize=50MB
 n=5
-for i in {0..3}
+for (( i=0; i<=3; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -99,7 +99,7 @@ cd ../
 mkdir D4; cd D4
 blocksize=25MB
 n=5
-for i in {0..7}
+for (( i=0; i<=7; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -109,7 +109,7 @@ cd ../
 mkdir D5; cd D5
 blocksize=83MB
 n=1
-for i in {0..11}
+for (( i=0; i<=11; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -119,7 +119,7 @@ cd ../
 mkdir D6; cd D6
 blocksize=41MB
 n=1
-for i in {0..23}
+for (( i=0; i<=23; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
@@ -129,7 +129,7 @@ cd ../
 mkdir D7; cd D7
 blocksize=20MB
 n=1
-for i in {0..47}
+for (( i=0; i<=47; i++ ))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done

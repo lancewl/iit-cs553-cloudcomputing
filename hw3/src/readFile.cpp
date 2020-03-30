@@ -32,7 +32,7 @@ namespace ReadTest{
     }
 
     void workload_init(){
-        system("bash src/scripts/createfiles.sh");
+        system("./src/scripts/createfiles.sh");
     }
 
     void workload_clean(){

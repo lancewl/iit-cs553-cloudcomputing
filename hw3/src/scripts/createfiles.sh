@@ -133,3 +133,5 @@ for i in {0..47}
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done
+
+echo "createfile.sh done"

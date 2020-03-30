@@ -13,7 +13,7 @@ do
     do       
         for record in 64k 1m 16m
         do
-            iozone -T -I -i 0 -i $workload -s $((10000/concur))m -t $concur -r $record
+            iozone -T -I -i 0 -i $workload -s $(((10*1024)/concur))m -t $concur -r $record
         done
     done 
 done

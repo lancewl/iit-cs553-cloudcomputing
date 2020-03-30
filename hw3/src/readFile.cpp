@@ -33,10 +33,14 @@ namespace ReadTest{
 
     void workload_init(){
         system("./src/scripts/createfiles.sh");
+    	printf("workload_init() done.\n");
+	return;
     }
 
     void workload_clean(){
         system("rm -rf data");
+    	printf("workload_clean() done.\n");
+	return;
     }
 
     int rs_rr_test(){

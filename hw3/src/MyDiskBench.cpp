@@ -7,6 +7,7 @@ using namespace std::chrono;
 
 int main()
 {
+    /*
     int concurrency[7] = {1, 2, 4, 8, 12, 24, 48};
     long recordSize[3] = {65536, 1048576, 16777216};
     bool workload[2] = {false, true};
@@ -35,11 +36,11 @@ int main()
             }
         }
     }
-
+*/
     // calling a function from readFile.cpp
     //ReadTest::workload_init();
-    //ReadTest::rs_rr_test();
-    //ReadTest::iops_rr_test();
+    ReadTest::rs_rr_test();
+    ReadTest::iops_rr_test();
     //ReadTest::workload_clean();
     return 0;
 }

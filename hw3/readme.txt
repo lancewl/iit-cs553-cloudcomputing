@@ -30,3 +30,27 @@ TODO: writeme
 # the result will be printed out on the screen
 # to catch the output as a file, please use command line tool such like 
 ~/.../team-25/hw3 $ ./main > output.txt
+
+
+#########  IOZONE  #########
+#
+### Iozone_test.sh ###
+#
+#To test our Iozone code, run our userfriendly Iozone_test.sh bashscript
+#You will have to specify the pattern and the number of threads.
+#The pattern you want to run between :
+#   "RS" to run the sequential read/write
+#   "RR" to run the random read/write operation
+#   "OPS" to run the random read/write operation and get the result in OPS/s 
+#The number of threads you want between 1 2 4 8 12 24 48
+#After pressing the "enter" key, you will get the result for the 3 records types of your configuration
+#
+### IOPS.sh ###
+#
+#Run this bash script to have the results of all the different configurations in OPS/s
+#
+### throughput.sh ###
+#
+#Run this bash script to get the results of all the different configurations in KB/s
+#
+##

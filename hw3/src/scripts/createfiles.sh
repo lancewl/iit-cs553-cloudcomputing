@@ -1,4 +1,4 @@
-#~/bin/bash
+#!/usr/bin/env bash
 # call this with
 # ~/hw3 $bash src/scripts/createfiles.sh
 
@@ -22,7 +22,7 @@ cd ../
 mkdir D3; cd D3
 blocksize=500MB
 n=5
-for (( i=0; i<=3; i++ ))
+for (( i=0; i<=3; i++))
 do
     dd if=/dev/zero of=$i bs=$blocksize count=$n
 done

@@ -36,9 +36,9 @@ int main()
         }
     }
     // calling a function from readFile.cpp
-    //ReadTest::workload_init();
+    ReadTest::workload_init();
     ReadTest::rs_rr_test();
     ReadTest::iops_rr_test();
-    //ReadTest::workload_clean();
+    ReadTest::workload_clean();
     return 0;
 }

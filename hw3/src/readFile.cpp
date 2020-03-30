@@ -53,7 +53,7 @@ namespace ReadTest{
         int i_start = 1;
         int i_end = 4;
         bool bigFileFlag = true;
-        for(int i=i_start; i<=i_end; i++){
+        for(int i=i_start; i<i_end; i++){
             // run the test for record sizes 64k, 1m and 16m
             // D1
             d1_rs(bigFileFlag, i);
@@ -133,7 +133,7 @@ namespace ReadTest{
         resultFile.close();
 
         // RR
-        resultFile.open("RR_result.txt");
+        resultFile.open(fileprefix+"-RR_result.txt");
         resultFile << "numThreads, recordSize(B), throughput(MB/s)" << endl;
         for(int i=start; i<end; i++){
             resultFile << 1 << ", " << recordSizes[i] << ", " << fileSize/(double)d1_rr_results[i] << endl;

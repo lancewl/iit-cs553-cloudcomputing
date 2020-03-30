@@ -8,6 +8,9 @@ TODO: writeme
 # in the hw3 directory, run
 ~/.../team-25/hw3 $ make clean; make
 
+# change permission for scripts
+~/.../team-25/hw3 $ chmod -R 777 src/scripts
+
 # and run the program with
 ~/.../team-25/hw3 $ ./main
 

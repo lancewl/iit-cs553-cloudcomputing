@@ -75,7 +75,7 @@ namespace ReadTest{
         }
 
 	    // calculate, and save results to a file
-        write_rs_rr_results("64k_1m_16m-",i_start, i_end);
+        write_rs_rr_results("64k_1m_16m",i_start, i_end);
 
         printf("rs_rr_test() done.\n");
         return 0;

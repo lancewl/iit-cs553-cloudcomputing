@@ -23,4 +23,5 @@ else
     do
         iozone -T -I -O -i 0 -i 2 -s $(((10*1024)/concur))m -t $concur -r $record
     done
+    
 fi

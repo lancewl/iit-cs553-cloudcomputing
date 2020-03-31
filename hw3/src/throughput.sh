@@ -16,5 +16,6 @@ do
             iozone -T -I -i 0 -i $workload -s $(((10*1024)/concur))m -t $concur -r $record
         done
     done 
+    
 done
   

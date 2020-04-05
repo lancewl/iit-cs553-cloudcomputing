@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
     }
     std::string filename = argv[1];
     int debugFlag = atoi(argv[3]);
-    int memSize = atoi(argv[2]); // user specified memSize
+    int memSize = atoi(argv[2]); // user specified memSize, GB
     if(memSize > MAX_MEM){ // mem specified too large
         fprintf(stderr, "User specified %dGB of memory. Too large (MAX_MEM=%dGB)\n", memSize, MAX_MEM);
         exit(EXIT_FAILURE);
@@ -44,7 +44,8 @@ int main(int argc, char *argv[]){
 
             
         }else if(debugFlag==4){ // example usage of IO_Helper
-            IO_Helper h1 (memSize, "data/gs.out.1"); // memSize: amount of memory available to use, and path to the gensort data file
+            unsigned long memSize_B = (unsigned long) memSize*1000*1000*1000; // in bytes
+            IO_Helper h1 (memSize_B, "data/gs.out.1"); // memSize: amount of memory available to use, and path to the gensort data file
             if(h1.fitInMem()){ // if the file is small enough
                 std::string* strArr = h1.fileToStrArr(); // read the entire file to memory as string array
                 std::cout << strArr[0] << std::endl << strArr[h1.getNumRecords()-1] << std::endl;

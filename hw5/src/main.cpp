@@ -29,10 +29,10 @@ int main(int argc, char *argv[]){
     if(debugFlag!=0){ // debug runs
         std::cout << "DEBUG BRANCH " << debugFlag << std::endl;
         if(debugFlag==1){
-            // debug branch for lance 
-            // test your code here
-            // ...
-
+            std::string test_string = "asjdvmalsdjaasdcAASFSAC";
+            std::cout << test_string << std::endl;
+            mergeSort(test_string, 0, test_string.size());
+            std::cout << test_string << std::endl;
         }else if(debugFlag==2){
             // debug branch for kevin
             // test your code here

@@ -3,6 +3,7 @@
 
 #include <string>
 
-void internalSort(std::string s);
+void mergeSort(std::string &s, int l, int r);
+void merge(std::string &s, int l, int m, int r);
 
 #endif

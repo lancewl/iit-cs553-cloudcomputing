@@ -40,6 +40,12 @@ int main(int argc, char *argv[]){
 
         }else if(debugFlag==3){
             // debug branch for justin
+            // create a IO_Helper
+            IO_Helper h1 (memSize, "data/gs.out.1");
+            std::cout << h1;
+            std::string* strArr = h1.fileToStrArr();
+
+            std::cout << strArr[0] << std::endl << strArr[1] << std::endl;
             
         }else{
             fprintf(stderr, "DEBUGFLAG ERROR\n"); exit(EXIT_FAILURE);

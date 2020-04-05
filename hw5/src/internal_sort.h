@@ -3,6 +3,6 @@
 
 #include <string>
 
-std::string internalSort();
+void internalSort(std::string s);
 
 #endif

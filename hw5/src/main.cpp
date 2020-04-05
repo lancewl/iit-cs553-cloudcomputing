@@ -1,5 +1,5 @@
-#include "sort.h"
-#include "merge.h"
+#include "internal_sort.h"
+#include "external_sort.h"
 #include "io.h"
 
 #include <iostream>

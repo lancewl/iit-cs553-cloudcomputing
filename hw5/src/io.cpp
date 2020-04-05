@@ -67,6 +67,16 @@ int IO_Helper::strArrToFile(std::string outputfn, std::string* strArr, unsigned 
 
 }
 
+void IO_Helper::setChunkSize(unsigned long cs){
+    chunkSize = cs;
+    numChunks = fileSize/chunkSize;
+    return;
+}
+unsigned long IO_Helper::getNumChunks(){
+    return numChunks;
+}
+
+
 // for debug printing
 std::ostream& operator<<(std::ostream &strm, const IO_Helper &h) {
             return strm << "filename{" << h.filename << "}" << std::endl 

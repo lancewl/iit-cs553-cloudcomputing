@@ -7,8 +7,7 @@ IO_Helper::IO_Helper(int bs, std::string fn){
     setFileName(filename);
 }
 IO_Helper::~IO_Helper(){
-    // free the memory in the heap
-    delete[] strArr;
+    // free allocated memory
 }
 
 int IO_Helper::setFileName(std::string fn){
@@ -31,11 +30,15 @@ long IO_Helper::getNumRecords(){
     return numRecords;
 }
 
+bool IO_Helper::fitInMem(){
+    return bufSize > fileSize;
+}
+
 std::string* IO_Helper::fileToStrArr(){
     // extra check for memSize
     if(bufSize < fileSize){ fprintf(stderr, "NOT ENOUGH MEMORY FOR fileToStrArr().\n"); exit(EXIT_FAILURE);}
     
-    strArr = new std::string[numRecords];
+    std::string* strArr = new std::string[numRecords];
 
     std::ifstream file;
     file.open(filename, std::ifstream::in);
@@ -51,7 +54,18 @@ std::string* IO_Helper::fileToStrArr(){
     file.close();
     return strArr;
 }
+int IO_Helper::strArrToFile(std::string outputfn, std::string* strArr, unsigned long numRecords){
+    std::ofstream file;
+    file.open(outputfn, std::ofstream::out | std::ofstream::trunc);
+    if(!file){ fprintf(stderr, "FILE OPEN ERROR\n"); exit(EXIT_FAILURE);}
+    int i = 0;
+    while(i < numRecords){
+        file << strArr[i] << std::endl;
+        i++;
+    }
+    file.close();
 
+}
 
 // for debug printing
 std::ostream& operator<<(std::ostream &strm, const IO_Helper &h) {

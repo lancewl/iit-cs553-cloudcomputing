@@ -6,7 +6,7 @@ TODO: write me
 
 # makefile needed.
 # for now compile with
-~/team-25/hw5$ g++ src/main.cpp src/io.cpp src/merge.cpp src/sort.cpp -o main
+~/team-25/hw5$ g++ src/main.cpp src/io.cpp src/external_sort.cpp src/internal_sort.cpp -o main
 
 # and run with
 ~/team-25/hw5$ ./main [inputFileName] [memSize] [debugFlag(0/1/2/3)]
@@ -14,5 +14,9 @@ TODO: write me
 e.g. ./main file.txt 8 0 // for normal run
      ./main file.txt 8 1 // for lance's branch
      ./main file.txt 8 2 // for kevin's branch
+
+./main file.txt 8 4 // readChunk example. Make sure the file data/gs.out.test exists.
+./main file.txt 8 5 // writeChunk example
+
 
 # Add your test code in your specified if-branch (main.cpp: line 29)

@@ -15,15 +15,21 @@ void debugger(int debug)
     {
     case 1:
     {
-        std::string test_string[] = {"AsfAGHM5om 00000000000000000000000000000000", "_sHd0jDv6X 00000000000000000000000000000001", "uI^EYm8s=| 00000000000000000000000000000002", "Q)JN)R9z-L 00000000000000000000000000000003"};
-        int size = sizeof(test_string) / sizeof(test_string[0]);
-        std::cout << size << std::endl;
-        for (int i = 0; i < size; i++)
-            std::cout << test_string[i] << std::endl;
-        heapSort(test_string, size);
-        std::cout << test_string << std::endl;
-        for (int i = 0; i < size; i++)
-            std::cout << test_string[i] << std::endl;
+        std::string test_filename = "data/test_in.txt";
+        std::string outputFilename = "data/test_out.txt";
+        int numRecordsPerChunk = 4;
+        std::string *chunk;
+        IO_Helper r_helper(test_filename, numRecordsPerChunk * REC_SIZE);
+        IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
+
+        while (r_helper.isChunkAvailable())
+        {
+            chunk = r_helper.readChunk();
+            int size = r_helper.getRecordsPerChunk();
+            heapSort(chunk, size);
+            w_helper.writeChunk(chunk, size);
+            delete[] chunk;
+        }
         break;
     }
     case 2:

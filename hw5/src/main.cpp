@@ -4,11 +4,10 @@
 
 #include <iostream>
 
-#define MAX_MEM 64 // in GB
+#define MAX_MEM 8 // in GB
 
 // run instructions
 // ./prog [gensort-filename] [memSize] [debugFlag(0/1/2/3/4)]
-
 
 int main(int argc, char *argv[]){
     // cmd line arg parsing. Can add more user input sanitization if needed.
@@ -44,21 +43,7 @@ int main(int argc, char *argv[]){
 
             
         }else if(debugFlag==4){ // example usage of IO_Helper
-            unsigned long memSize_B = (unsigned long) memSize*1000*1000*1000; // in bytes
-            IO_Helper h1 (memSize_B, "data/gs.out.1"); // memSize: amount of memory available to use, and path to the gensort data file
-            if(h1.fitInMem()){ // if the file is small enough
-                std::string* strArr = h1.fileToStrArr(); // read the entire file to memory as string array
-                std::cout << strArr[0] << std::endl << strArr[h1.getNumRecords()-1] << std::endl;
-                delete[] strArr; // !! remember to free the memory !!
-            }else{
-                std::cout << "memSize available too small" << std::endl;
-            }
-            // write a strArr to file
-            std::string outputfn = "out.txt";
-            std::string strArr[5] = {"hi", "hello", "apple", "banana", "ok"};
-            int numRecords = 5;
-            h1.strArrToFile(outputfn, strArr, numRecords);            
-
+            
         }else{
             fprintf(stderr, "DEBUGFLAG ERROR\n"); exit(EXIT_FAILURE);
         }

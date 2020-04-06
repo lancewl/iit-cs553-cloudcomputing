@@ -1,16 +1,36 @@
 #include "io.h"
 
 
-IO_Helper::IO_Helper(unsigned long memSize, std::string filename){
-    memSize_ = memSize; // Gin bytes
-    filename_ = filename;
-    openFile(filename);
+IO_Helper::IO_Helper(std::string filename, unsigned long chunkSize){
+
 }
 IO_Helper::~IO_Helper(){
     // free allocated memory
 }
 
-int IO_Helper::openFile(std::string filename){
+unsigned long IO_Helper::getFileSize(){
+    return fileSize_;
+}
+unsigned long IO_Helper::getNumRecords(){
+    return numRecords_;
+}
+unsigned long IO_Helper::getNumChunks(){
+    return numChunks_;
+}
+
+bool IO_Helper::isChunkAvailable(){
+    return false;
+}
+
+std::string* IO_Helper::readChunk(){
+    return nullptr;
+}
+
+void IO_Helper::writeChunk(std::string* strArr, unsigned long numRecords){
+    return;
+}
+
+unsigned long IO_Helper::openFile(std::string filename){
     // use fstream to open the file
     std::ifstream file;
     file.open(filename, std::ifstream::in);
@@ -19,21 +39,16 @@ int IO_Helper::openFile(std::string filename){
     fileSize_ = file.tellg();
     file.close();
     numRecords_ = fileSize_/100;
-    return 0;
-}
-
-unsigned long IO_Helper::getFileSize(){
     return fileSize_;
 }
 
-unsigned long IO_Helper::getNumRecords(){
-    return numRecords_;
-}
 
+
+/*
+To Be Refactored
 bool IO_Helper::fitInMem(){
     return memSize_ > fileSize_;
 }
-
 std::string* IO_Helper::fileToStrArr(){
     // extra check for memSize
     if(!fitInMem()){ fprintf(stderr, "NOT ENOUGH MEMORY FOR fileToStrArr().\n"); exit(EXIT_FAILURE);}
@@ -66,16 +81,7 @@ int IO_Helper::strArrToFile(std::string outputFilename, std::string* strArr, uns
     file.close();
     return 0;
 }
-
-unsigned long IO_Helper::getNumChunks(){
-    return numChunks_;
-}
-
-
-std::string* IO_Helper::readChunk(std::string filename, unsigned long chunkIndex){
-    return NULL;
-}
-
+*/
 // for debug printing
 std::ostream& operator<<(std::ostream &strm, const IO_Helper &h) {
             return strm << "filename{" << h.filename_ << "}" << std::endl 

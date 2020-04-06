@@ -54,9 +54,11 @@ void debugger(int debug)
         strArr[1] = "world";
         helperVec[0]->writeChunk(strArr, 2);
         helperVec[1]->writeChunk(strArr, 2);
-
-        // IO_Helper* h1 = new IO_Helper("data/f1.txt", 10*REC_SIZE);
-
+        // clean up
+        
+        for(int i = 0; i<helperVec.size(); i++){
+            delete helperVec[i];
+        }
 
         // code block
         break;

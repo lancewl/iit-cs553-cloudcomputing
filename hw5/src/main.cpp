@@ -29,10 +29,15 @@ int main(int argc, char *argv[]){
     if(debugFlag!=0){ // debug runs
         std::cout << "DEBUG BRANCH " << debugFlag << std::endl;
         if(debugFlag==1){
-            std::string test_string = "asjdvmalsdjaasdcAASFSAC";
+            std::string test_string[] = {"AsfAGHM5om 00000000000000000000000000000000", "_sHd0jDv6X 00000000000000000000000000000001", "uI^EYm8s=| 00000000000000000000000000000002", "Q)JN)R9z-L 00000000000000000000000000000003"};
+            int size = sizeof(test_string) / sizeof(test_string[0]);
+            std::cout << size << std::endl;
+            for(int i = 0; i < size; i++)
+                std::cout << test_string[i] << std::endl;
+            heapSort(test_string, size);
             std::cout << test_string << std::endl;
-            mergeSort(test_string, 0, test_string.size());
-            std::cout << test_string << std::endl;
+            for (int i = 0; i < size; i++)
+                std::cout << test_string[i] << std::endl;
         }else if(debugFlag==2){
             // debug branch for kevin
             // test your code here

@@ -4,13 +4,13 @@
 IO_Helper::IO_Helper(unsigned long memSize, std::string filename){
     memSize_ = memSize; // Gin bytes
     filename_ = filename;
-    setFileName(filename);
+    openFile(filename);
 }
 IO_Helper::~IO_Helper(){
     // free allocated memory
 }
 
-int IO_Helper::setFileName(std::string filename){
+int IO_Helper::openFile(std::string filename){
     // use fstream to open the file
     std::ifstream file;
     file.open(filename, std::ifstream::in);

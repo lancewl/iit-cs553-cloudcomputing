@@ -17,24 +17,27 @@ class IO_Helper{
         IO_Helper(std::string filename, unsigned long chunkSize);
         ~IO_Helper();
         unsigned long getFileSize(); // return the fileSize, in bytes
-        unsigned long getNumRecords(); // return the number of records in the file
-        unsigned long getNumChunks(); // get the total number of chunks for this file
+        unsigned long getRecordsPerChunk();
+        unsigned long getNumChunks();
+        unsigned long getCurrChunkIndex();
 
         bool isChunkAvailable(); // true if there are chunks left
-        static std::string* readChunk(); // returns a string array of that chunk
-        static void writeChunk(std::string* strArr, unsigned long numRecords); // append chunk to eof
+        std::string* readChunk(); // returns a string array of that chunk
+        void writeChunk(std::string* strArr, unsigned long numRecords); // append chunk to eof
 
     private:
         std::string filename_;
-        std::fstream file;
+        std::fstream file_;
         unsigned long fileSize_;
         unsigned long numRecords_;
         unsigned long chunkSize_;
         unsigned long numChunks_;
+        unsigned long recordsPerChunk_;
         unsigned long currChunkIndex_;
+        
 
-        unsigned long openFile(std::string fn); // open a file, and check the fileSize
-        unsigned long closeFile();
+        void openFile(std::string fn); // open a file, and check the fileSize
+        void closeFile();
         
         friend std::ostream& operator<<(std::ostream &strm, const IO_Helper &h);
 };

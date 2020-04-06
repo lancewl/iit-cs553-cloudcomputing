@@ -5,7 +5,7 @@
 #include <iostream>
 
 #define MAX_MEM 8 // in GB
-
+#define REC_SIZE 100 // in bytes
 // run instructions
 // ./prog [gensort-filename] [memSize] [debugFlag(0/1/2/3/4)]
 
@@ -40,10 +40,38 @@ int main(int argc, char *argv[]){
         }else if(debugFlag==3){
             // debug branch for justin
             // create a IO_Helper
+            
 
-            
         }else if(debugFlag==4){ // example usage of IO_Helper
-            
+        // readChunk
+            std::string test_filename = "data/gs.out.test";
+            int numRecordsPerChunk = 3;
+            IO_Helper h1(test_filename, numRecordsPerChunk*REC_SIZE); // 100bytes per record. 
+            std::string* chunk;
+            std::cout << "h1.getNumChunks(): " << h1.getNumChunks() << std::endl;
+            unsigned long currChunkIndex;
+            while(h1.isChunkAvailable()){
+                currChunkIndex = h1.getCurrChunkIndex();
+                chunk = h1.readChunk();
+                std::cout << "chunk(" << currChunkIndex << ") \t: chunk[0]\t:\t" << chunk[0] << std::endl;
+                std::cout << "\t\t: chunk[" << numRecordsPerChunk << "-1]\t:\t" << chunk[h1.getRecordsPerChunk()-1] << std::endl;
+                delete[] chunk;
+            }
+            std::cout << "readChunk example done." << std::endl;
+        }else if(debugFlag==5){ // example usage of IO_Helper
+        // writeChunk
+            std::string outputFilename = "test.out";
+            int numRecords = 3;
+            IO_Helper h1(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
+            std::string* strArr = new std::string[numRecords];
+            strArr[0] = "Hello";
+            strArr[1] = "from";
+            strArr[2] = "Mars";
+            // write twice
+            h1.writeChunk(strArr, numRecords);
+            h1.writeChunk(strArr, numRecords);
+            delete[] strArr;
+            std::cout << "writeChunk example done." << std::endl;
         }else{
             fprintf(stderr, "DEBUGFLAG ERROR\n"); exit(EXIT_FAILURE);
         }

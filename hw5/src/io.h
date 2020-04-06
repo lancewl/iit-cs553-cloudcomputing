@@ -7,11 +7,6 @@
 #include <fstream>
 #include <queue>
 
-// TODO:
-// setup queues for memory chunks. c++ templates or maybe vectors.
-// make sure the queue behaves correctly,
-// then do multithreading with pthreads
-
 class IO_Helper{
     public:
         IO_Helper(std::string filename, unsigned long chunkSize);
@@ -27,6 +22,7 @@ class IO_Helper{
 
     private:
         std::string filename_;
+        std::string log_filename_;
         std::fstream file_;
         unsigned long fileSize_;
         unsigned long numRecords_;
@@ -41,6 +37,5 @@ class IO_Helper{
         
         friend std::ostream& operator<<(std::ostream &strm, const IO_Helper &h);
 };
-
 
 #endif

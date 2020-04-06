@@ -2,6 +2,8 @@
 #include "external_sort.h"
 #include "io.h"
 
+#include <vector>
+
 #include <iostream>
 
 #define MAX_MEM 8    // in GB
@@ -15,9 +17,9 @@ void debugger(int debug)
     {
     case 1:
     {
-        std::string test_filename = "data/test_in.txt";
-        std::string outputFilename = "data/test_out.txt";
-        int numRecordsPerChunk = 4;
+        std::string test_filename = "data/gs.out.test";
+        std::string outputFilename = "data/gs.out.test.sorted";
+        int numRecordsPerChunk = 10;
         std::string *chunk;
         IO_Helper r_helper(test_filename, numRecordsPerChunk * REC_SIZE);
         IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
@@ -39,6 +41,23 @@ void debugger(int debug)
     }
     case 3:
     {
+        std::vector<IO_Helper*> helperVec;
+        IO_Helper* helperPtr;
+        for(int i = 0; i<3; i++){
+            
+            helperPtr = new IO_Helper("data/"+std::to_string(i)+".txt", 9999);
+            helperVec.push_back(helperPtr);
+        }
+
+        std::string* strArr = new std::string[2];
+        strArr[0] = "hello";
+        strArr[1] = "world";
+        helperVec[0]->writeChunk(strArr, 2);
+        helperVec[1]->writeChunk(strArr, 2);
+
+        // IO_Helper* h1 = new IO_Helper("data/f1.txt", 10*REC_SIZE);
+
+
         // code block
         break;
     }

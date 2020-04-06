@@ -1,6 +1,5 @@
 #include "io.h"
 
-
 IO_Helper::IO_Helper(std::string filename, unsigned long chunkSize){
     filename_ = filename;
     chunkSize_ = chunkSize;
@@ -64,7 +63,6 @@ void IO_Helper::openFile(std::string filename){
     file_.seekg(0, file_.beg);
     return;
 }
-
 
 // for debug printing
 std::ostream& operator<<(std::ostream &strm, const IO_Helper &h) {

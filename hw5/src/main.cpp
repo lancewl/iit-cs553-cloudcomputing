@@ -68,8 +68,8 @@ void debugger(int debug)
     }
     case 2:
     {
-        // code block
-        break;
+        externalSort();
+         break;
     }
     case 3:
     {

@@ -16,19 +16,20 @@ void debugger(int debug)
     case 1:
     {
         std::string test_filename = "data/test_in.txt";
-        std::string outputFilename = "data/test_out.txt";
-        int numRecordsPerChunk = 4;
+        int numRecordsPerChunk = 1;
         std::string *chunk;
         IO_Helper r_helper(test_filename, numRecordsPerChunk * REC_SIZE);
-        IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
-
+        int i = 0;
         while (r_helper.isChunkAvailable())
         {
             chunk = r_helper.readChunk();
             int size = r_helper.getRecordsPerChunk();
             heapSort(chunk, size);
+            std::string outputFilename = "data/test_out" + std::to_string(i) + ".txt";
+            IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
             w_helper.writeChunk(chunk, size);
             delete[] chunk;
+            i++;
         }
         break;
     }

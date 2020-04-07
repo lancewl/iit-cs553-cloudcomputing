@@ -5,11 +5,41 @@
 #include <vector>
 
 #include <iostream>
+#include <pthread.h>
+
 
 #define MAX_MEM 8    // in GB
 #define REC_SIZE 100 // in bytes
 // run instructions
 // ./prog [gensort-filename] [memSize] [debug(0/1/2/3/4)]
+struct args
+{
+    int threadID;
+    std::string filename;
+    unsigned long chunkSize;
+};
+
+
+void *thread_func(void *input){
+    std::cout << "Thread created." << std::endl;
+    // do stuffs
+    struct args* a = (struct args*)input;
+    IO_Helper* h = new IO_Helper(a->filename, a->chunkSize);
+    std::string *chunk;
+    std::cout << "h1.getNumChunks(): " << h->getNumChunks() << std::endl;
+    unsigned long currChunkIndex;
+    while (h->isChunkAvailable())
+    {
+        currChunkIndex = h->getCurrChunkIndex();
+        chunk = h->readChunk();
+        std::cout << "chunk(" << currChunkIndex << ") \t: chunk[0]\t:\t" << chunk[0] << std::endl;
+        std::cout << "\t\t: chunk[" << a->chunkSize/REC_SIZE << "-1]\t:\t" << chunk[h->getRecordsPerChunk() - 1] << std::endl;
+        delete[] chunk;
+    }
+    delete h;
+    std::cout << "readChunk done." << std::endl;
+    std::cout << "Thread(" << a->threadID << ") done." << std::endl;
+}
 
 void debugger(int debug)
 {
@@ -41,31 +71,27 @@ void debugger(int debug)
     }
     case 3:
     {
-        std::vector<IO_Helper*> helperVec;
-        IO_Helper* helperPtr;
-        for(int i = 0; i<3; i++){
-            
-            helperPtr = new IO_Helper("data/"+std::to_string(i)+".txt", 9999);
-            helperVec.push_back(helperPtr);
+        // try threads and concurrent usage of IO_Helper.
+        int numRecordsPerChunk = 3;
+        // create 3 threads
+        pthread_t tidArr[3];
+        for(int i = 0; i < 3; i++){
+            struct args *a = (struct args*)malloc(sizeof(struct args));
+            a->threadID = i;
+            a->chunkSize = numRecordsPerChunk*REC_SIZE;
+            a->filename = "data/gs.out.test"+std::to_string(i);
+            pthread_create(&tidArr[i], NULL, thread_func, (void *)a);
         }
 
-        std::string* strArr = new std::string[2];
-        strArr[0] = "hello";
-        strArr[1] = "world";
-        helperVec[0]->writeChunk(strArr, 2);
-        helperVec[1]->writeChunk(strArr, 2);
-        // clean up
-        
-        for(int i = 0; i<helperVec.size(); i++){
-            delete helperVec[i];
+        // join all threads
+        for(int i = 0; i < 3; i++){
+            pthread_join(tidArr[i], NULL);
         }
-
         // code block
         break;
     }
-    case 4:
+    case 4: // readChunk
     {
-        // readChunk
         std::string test_filename = "data/gs.out.test";
         int numRecordsPerChunk = 3;
         IO_Helper h1(test_filename, numRecordsPerChunk * REC_SIZE); // 100bytes per record.
@@ -83,9 +109,8 @@ void debugger(int debug)
         std::cout << "readChunk example done." << std::endl;
         break;
     }
-    case 5:
+    case 5: // writeChunk
     {
-        // writeChunk
         std::string outputFilename = "test.out";
         int numRecords = 3;
         IO_Helper h1(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
@@ -98,6 +123,28 @@ void debugger(int debug)
         h1.writeChunk(strArr, numRecords);
         delete[] strArr;
         std::cout << "writeChunk example done." << std::endl;
+        break;
+    }
+    case 6: // dynamic IO_Helper
+    {
+        std::vector<IO_Helper*> helperVec;
+        IO_Helper* helperPtr;
+        for(int i = 0; i<3; i++){
+            
+            helperPtr = new IO_Helper("data/"+std::to_string(i)+".txt", 9999);
+            helperVec.push_back(helperPtr);
+        }
+        std::string* strArr = new std::string[2];
+        strArr[0] = "hello";
+        strArr[1] = "world";
+        helperVec[0]->writeChunk(strArr, 2);
+        helperVec[1]->writeChunk(strArr, 2);
+        // clean up
+        
+        for(int i = 0; i<helperVec.size(); i++){
+            delete helperVec[i];
+        }
+        // code block
         break;
     }
     default:

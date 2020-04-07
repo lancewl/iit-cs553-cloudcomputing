@@ -20,3 +20,7 @@ e.g. ./main file.txt 8 0 // for normal run
 
 
 # Add your test code in your specified if-branch (main.cpp: line 29)
+
+
+# linux sort by ascii, run
+LC_ALL=C sort data/gs.out.test

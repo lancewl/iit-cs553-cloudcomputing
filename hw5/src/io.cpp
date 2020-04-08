@@ -38,7 +38,7 @@ bool IO_Helper::isChunkAvailable(){
 
 std::string* IO_Helper::readChunk(){
     std::string* chunk = new std::string[recordsPerChunk_];
-    int i = 0;
+    unsigned long i = 0;
     char buf[128];
     while(i < recordsPerChunk_){
         file_.getline(buf, 100);
@@ -51,7 +51,7 @@ std::string* IO_Helper::readChunk(){
 }
 
 void IO_Helper::writeChunk(std::string* strArr, unsigned long numRecords){
-    int i = 0;
+    unsigned long i = 0;
     while(i < numRecords){
         file_ << strArr[i] << std::endl;
         i++;

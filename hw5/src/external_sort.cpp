@@ -24,7 +24,6 @@ void externalSort(std::vector<IO_Helper *> helperVec, long bufferSize)
         // Get the minimum element and store it in output
         MinHeapNode root = hp.getMin();
         output[count] = root.element;
-        std::cout << output[count] << std::endl;
         // Find the next elelement that will replace current
         // root of heap. The next element belongs to same
         // array as the current root.

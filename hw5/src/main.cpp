@@ -73,23 +73,8 @@ void debugger(int debug)
          break;
     }
     case 3:
-    {
-        // try threads and concurrent usage of IO_Helper.
-        int numRecordsPerChunk = 3;
-        // create 3 threads
-        pthread_t tidArr[3];
-        for(int i = 0; i < 3; i++){
-            struct args *a = (struct args*)malloc(sizeof(struct args));
-            a->threadID = i;
-            a->chunkSize = numRecordsPerChunk*REC_SIZE;
-            a->filename = "data/gs.out.test"+std::to_string(i);
-            pthread_create(&tidArr[i], NULL, thread_func, (void *)a);
-        }
-
-        // join all threads
-        for(int i = 0; i < 3; i++){
-            pthread_join(tidArr[i], NULL);
-        }
+    {   
+        // Idle...
         // code block
         break;
     }
@@ -133,7 +118,6 @@ void debugger(int debug)
         std::vector<IO_Helper*> helperVec;
         IO_Helper* helperPtr;
         for(int i = 0; i<3; i++){
-            
             helperPtr = new IO_Helper("data/"+std::to_string(i)+".txt", 9999);
             helperVec.push_back(helperPtr);
         }
@@ -144,6 +128,77 @@ void debugger(int debug)
         helperVec[1]->writeChunk(strArr, 2);
         // clean up
         
+        for(int i = 0; i<helperVec.size(); i++){
+            delete helperVec[i];
+        }
+        // code block
+        break;
+    }
+    case 7: // concurrent IO_Helper usage
+    {
+        // concurrent usage of IO_Helper.
+        int numRecordsPerChunk = 3;
+        // create 3 threads
+        pthread_t tidArr[3];
+        for(int i = 0; i < 3; i++){
+            struct args *a = (struct args*)malloc(sizeof(struct args));
+            a->threadID = i;
+            a->chunkSize = numRecordsPerChunk*REC_SIZE;
+            a->filename = "data/gs.out.test"+std::to_string(i);
+            pthread_create(&tidArr[i], NULL, thread_func, (void *)a);
+        }
+
+        // join all threads
+        for(int i = 0; i < 3; i++){
+            pthread_join(tidArr[i], NULL);
+        }
+    }
+    case 8: // Buffered_IO_Helper
+    {
+        // Declaring Buffered_IO_Helper
+        std::string test_filename = "data/gs.out.test2";
+        int numRecordsPerChunk = 2;
+        unsigned long chunkSize = numRecordsPerChunk*REC_SIZE; // The size of each chunk (in bytes)
+        int bufSize = 5*chunkSize; // Specify the size of the queue (in bytes)
+        Buffered_IO_Helper* bioh = new Buffered_IO_Helper(test_filename, chunkSize, bufSize);  
+        bioh->start_thread();
+        // Using Buffered_IO_Helper
+        while(bioh->isChunkAvailable()){
+            std::string *chunk = bioh->readChunk();
+            unsigned long currChunkIndex = bioh->getCurrChunkIndex();
+            std::cout << "chunk(" << currChunkIndex << ") \t: chunk[0]\t:\t" << chunk[0] << std::endl;
+            std::cout << "\t\t: chunk[" << numRecordsPerChunk << "-1]\t:\t" << chunk[bioh->getRecordsPerChunk() - 1] << std::endl;
+            delete[] chunk;
+        }
+        
+        delete bioh;
+        // code block
+        break;
+    }
+    case 9: // Dynamic Buffered_IO_Helper, declaration and usage
+    {
+        int numRecordsPerChunk = 2;
+        unsigned long chunkSize = numRecordsPerChunk*REC_SIZE; // The size of each chunk (in bytes)
+        int bufSize = 3*chunkSize; // Specify the size of the queue (in bytes)
+        std::vector<Buffered_IO_Helper*> helperVec;
+        Buffered_IO_Helper* helperPtr;
+        for(int i = 0; i<3; i++){
+            helperPtr = new Buffered_IO_Helper("data/gs.out.test"+std::to_string(i), chunkSize, bufSize);
+            helperPtr->start_thread();
+            helperVec.push_back(helperPtr);
+        }
+        // usage:
+        for(int i=0; i<helperVec.size(); i++){ // read all the chunks from all 3 helper pointers
+            std::cout << "Reading file:" << helperVec[i]->getFilename() << std::endl;
+            while(helperVec[i]->isChunkAvailable()){
+                std::string *chunk = helperVec[i]->readChunk();
+                unsigned long currChunkIndex = helperVec[i]->getCurrChunkIndex();
+                std::cout << "chunk(" << currChunkIndex << ") \t: chunk[0]\t:\t" << chunk[0] << std::endl;
+                std::cout << "\t\t: chunk[" << numRecordsPerChunk << "-1]\t:\t" << chunk[helperVec[i]->getRecordsPerChunk() - 1] << std::endl;
+                delete[] chunk;
+            }
+        }
+        // clean up
         for(int i = 0; i<helperVec.size(); i++){
             delete helperVec[i];
         }

@@ -15,6 +15,9 @@ IO_Helper::~IO_Helper(){
     file_.close();
 }
 
+std::string IO_Helper::getFilename(){
+    return filename_;
+}
 unsigned long IO_Helper::getFileSize(){
     return fileSize_;
 }

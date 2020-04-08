@@ -6,11 +6,13 @@
 #include <iostream>
 #include <fstream>
 #include <queue>
+#include <semaphore.h>
 
 class IO_Helper{
     public:
         IO_Helper(std::string filename, unsigned long chunkSize);
         ~IO_Helper();
+        std::string getFilename();
         unsigned long getFileSize(); // return the fileSize, in bytes
         unsigned long getRecordsPerChunk();
         unsigned long getNumChunks();
@@ -36,6 +38,38 @@ class IO_Helper{
         void closeFile();
         
         friend std::ostream& operator<<(std::ostream &strm, const IO_Helper &h);
+};
+
+class Buffered_IO_Helper{
+    public:
+        Buffered_IO_Helper(std::string filename, unsigned long chunkSize, unsigned long bufferSize);
+        ~Buffered_IO_Helper();
+        std::string getFilename();
+        unsigned long getFileSize(); // return the fileSize, in bytes
+        unsigned long getRecordsPerChunk();
+        unsigned long getNumChunks();
+        unsigned long getCurrChunkIndex();
+
+        bool isChunkAvailable(); // true if there are chunks left
+        std::string* readChunk(); // returns a string array of that chunk
+        void writeChunk(std::string* strArr, unsigned long numRecords); // append chunk to eof
+
+        pthread_t tid_;
+        void start_thread();
+        
+    private:
+        unsigned long bufferSize_;
+        unsigned int maxItems_;
+        unsigned long headChunkIndex_;
+
+        IO_Helper* ih_;
+        
+        std::queue<std::string*>* bufferQueue_;
+        sem_t itemAvailable_;
+        sem_t haveSpace_;
+
+        sem_t isWriting_;
+
 };
 
 #endif

@@ -39,6 +39,7 @@ void *thread_func(void *input){
     delete h;
     std::cout << "readChunk done." << std::endl;
     std::cout << "Thread(" << a->threadID << ") done." << std::endl;
+    
 }
 
 void debugger(int debug)
@@ -68,7 +69,7 @@ void debugger(int debug)
     }
     case 2:
     {
-        externalSort();
+        //externalSort();
          break;
     }
     case 3:
@@ -168,13 +169,20 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
     std::string filename = argv[1];
-    int debug = atoi(argv[3]);
-    int memSize = atoi(argv[2]); // user specified memSize, GB
-    if (memSize > MAX_MEM)
-    { // mem specified too large
-        fprintf(stderr, "User specified %dGB of memory. Too large (MAX_MEM=%dGB)\n", memSize, MAX_MEM);
+    std::ifstream f(filename);
+    if(!f.good()){
+        fprintf(stderr, "Filename not exist.\n");
         exit(EXIT_FAILURE);
     }
+    f.close();
+    int debug = atoi(argv[3]);
+    long memSize = atoi(argv[2]); // user specified memSize, GB
+    if (memSize > MAX_MEM)
+    { // mem specified too large
+        fprintf(stderr, "User specified %ldGB of memory. Too large (MAX_MEM=%dGB)\n", memSize, MAX_MEM);
+        exit(EXIT_FAILURE);
+    }
+    memSize = memSize * 1073741824;
 
     if (debug)
     { // debug runs
@@ -183,13 +191,30 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // normal runs
-    // check filesize using function in io.cpp, in namespace io.
+    //Internal Sorting
+    std::string *chunk;
+    IO_Helper r_helper(filename, memSize);
+    std::vector<IO_Helper *> ext_helperVec;
+    IO_Helper *ext_helperPtr;
+    int i = 0;
+    while (r_helper.isChunkAvailable())
+    {
+        chunk = r_helper.readChunk();
+        int size = r_helper.getRecordsPerChunk();
+        heapSort(chunk, size);
+        std::string outputFilename = "data/in_sorted-" + std::to_string(i) + ".txt";
+        IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
+        //TODO:need to cleare the sorted file before writing.
+        w_helper.writeChunk(chunk, size);
+        //create IO Helper and store it into the helper vector
+        ext_helperPtr = new IO_Helper(outputFilename, memSize / 2 / r_helper.getNumChunks());
+        ext_helperVec.push_back(ext_helperPtr);
 
-    // if size is smaller than memSize, do simple in-memory sort
-
-    // otherwise call function in merge.cpp to do external sort i.e. k-way merge
-
+        delete[] chunk;
+        i++;
+    }
+    //External Sorting
+    externalSort(ext_helperVec, memSize/2);
     std::cout << "IMPLEMENTATION INCOMPLETE." << std::endl;
     return 0;
 }

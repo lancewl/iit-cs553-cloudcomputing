@@ -5,8 +5,9 @@ void externalSort(std::vector<IO_Helper *> helperVec, int bufferSize)
     int heap_size = helperVec.size();
     int arr_size = helperVec[0]->getRecordsPerChunk();
     std::string *arr[heap_size];
+    IO_Helper w_helper("output.txt", 9999);
 
-    std::string output[heap_size * arr_size];
+    std::string output[bufferSize/100];
     MinHeapNode *harr = new MinHeapNode[heap_size];
     for (int i = 0; i < heap_size; i++)
     {
@@ -22,7 +23,7 @@ void externalSort(std::vector<IO_Helper *> helperVec, int bufferSize)
         // Get the minimum element and store it in output
         MinHeapNode root = hp.getMin();
         output[count] = root.element;
-
+        std::cout << output[count] << std::endl;
         // Find the next elelement that will replace current
         // root of heap. The next element belongs to same
         // array as the current root.
@@ -35,12 +36,24 @@ void externalSort(std::vector<IO_Helper *> helperVec, int bufferSize)
         }
         // If root was the last element of its array
         else
-            hp.deleteMin();
-
+        {
+            if(helperVec[root.arr_idx]->isChunkAvailable())
+            {
+                arr[root.arr_idx] = helperVec[root.arr_idx]->readChunk();
+                root.element = arr[root.arr_idx][0];
+                root.ele_idx = 1;
+                // Replace root with next element of array
+                hp.replaceMin(root);
+            }
+            else
+                hp.deleteMin();
+        }
         count++;
+        if (count == bufferSize)
+        {
+            w_helper.writeChunk(output, count);
+            count = 0;
+        }
     }
-    for (int i = 0; i < arr_size * heap_size; i++)
-    {
-        std::cout << output[i] << std::endl;
-    }
+    w_helper.writeChunk(output, count);
 }

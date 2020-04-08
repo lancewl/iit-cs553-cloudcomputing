@@ -8,7 +8,7 @@ IO_Helper::IO_Helper(std::string filename, unsigned long chunkSize){
     numChunks_ = (fileSize_+chunkSize_-1)/chunkSize_; // quick ceiling 
     recordsPerChunk_ = chunkSize_/100;
     if (recordsPerChunk_ > numRecords_)
-        recordsPerChunk_ = numRecords_+1;
+        recordsPerChunk_ = numRecords_;
     currChunkIndex_ = 0;
 }
 IO_Helper::~IO_Helper(){

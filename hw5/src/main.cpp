@@ -268,6 +268,7 @@ int main(int argc, char *argv[])
         delete[] chunk;
         i++;
     }
+    //TODO: If in memory can sort the data, no need to external sort
     //External Sorting
     externalSort(ext_helperVec, memSize/2);
     std::cout << "IMPLEMENTATION INCOMPLETE." << std::endl;

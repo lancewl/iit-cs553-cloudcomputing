@@ -6,7 +6,6 @@ void externalSort(std::vector<IO_Helper *> helperVec, long bufferSize)
     int arr_size[heap_size];
     std::string *arr[heap_size];
     IO_Helper w_helper("output.txt", 9999);
-    std::cout << "test" << std::endl;
     std::string *output = new std::string [bufferSize / 100];
     MinHeapNode *harr = new MinHeapNode[heap_size];
     for (int i = 0; i < heap_size; i++)
@@ -24,6 +23,7 @@ void externalSort(std::vector<IO_Helper *> helperVec, long bufferSize)
         // Get the minimum element and store it in output
         MinHeapNode root = hp.getMin();
         output[count] = root.element;
+        std::cout << output[count] << std::endl;
         // Find the next elelement that will replace current
         // root of heap. The next element belongs to same
         // array as the current root.
@@ -49,7 +49,7 @@ void externalSort(std::vector<IO_Helper *> helperVec, long bufferSize)
                 hp.deleteMin();
         }
         count++;
-        if (count == bufferSize)
+        if (count == bufferSize/100)
         {
             w_helper.writeChunk(output, count);
             count = 0;

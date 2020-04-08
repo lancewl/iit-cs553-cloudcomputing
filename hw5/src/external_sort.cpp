@@ -1,14 +1,16 @@
 #include "external_sort.h"
 
-void externalSort()
+void externalSort(std::vector<IO_Helper *> helperVec, int bufferSize)
 {
-    int heap_size = 3;
-    int arr_size = 3;
-    std::string arr[3][3] = {{"asdga", "lasdd", "nljsd"}, {"jgfdr", "kcrsd", "sjfrc"}, {"okmqe", "rsfhc", "plsaf"}};
+    int heap_size = helperVec.size();
+    int arr_size = helperVec[0]->getRecordsPerChunk();
+    std::string *arr[heap_size];
+
     std::string output[heap_size * arr_size];
     MinHeapNode *harr = new MinHeapNode[heap_size];
     for (int i = 0; i < heap_size; i++)
     {
+        arr[i] = helperVec[i]->readChunk();
         harr[i].element = arr[i][0]; // Store the first element
         harr[i].arr_idx = i;               // index of array
         harr[i].ele_idx = 1;               // Index of next element to be stored from array
@@ -37,7 +39,8 @@ void externalSort()
 
         count++;
     }
-    for (int i = 0; i < 9; i++){
+    for (int i = 0; i < arr_size * heap_size; i++)
+    {
         std::cout << output[i] << std::endl;
     }
 }

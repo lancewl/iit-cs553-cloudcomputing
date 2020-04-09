@@ -7,9 +7,9 @@ rm -rf data
 
 mkdir data
 cd data
-~/gensort -a $((10000000*1)) gs.out.1
-# ~/gensort -a $((10000000*4)) gs.out.4
-# ~/gensort -a $((10000000*8)) gs.out.8
-# ~/gensort -a $((10000000*16)) gs.out.16
+~/gensort -a $((10000000*1)) gs.out.1g
+~/gensort -a $((10000000*4)) gs.out.4g
+~/gensort -a $((10000000*16)) gs.out.16g
+~/gensort -a $((10000000*64)) gs.out.8g
 
 echo "gensort data done."

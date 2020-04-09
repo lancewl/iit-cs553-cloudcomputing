@@ -7,40 +7,13 @@
 #include <iostream>
 #include <pthread.h>
 
+#include <chrono>
+#include <ctime>
 
 #define MAX_MEM 8    // in GB
 #define REC_SIZE 100 // in bytes
 // run instructions
 // ./prog [gensort-filename] [memSize] [debug(0/1/2/3/4)]
-struct args
-{
-    int threadID;
-    std::string filename;
-    unsigned long chunkSize;
-};
-
-
-void *thread_func(void *input){
-    std::cout << "Thread created." << std::endl;
-    // do stuffs
-    struct args* a = (struct args*)input;
-    IO_Helper* h = new IO_Helper(a->filename, a->chunkSize);
-    std::string *chunk;
-    std::cout << "h1.getNumChunks(): " << h->getNumChunks() << std::endl;
-    unsigned long currChunkIndex;
-    while (h->isChunkAvailable())
-    {
-        currChunkIndex = h->getCurrChunkIndex();
-        chunk = h->readChunk();
-        std::cout << "chunk(" << currChunkIndex << ") \t: chunk[0]\t:\t" << chunk[0] << std::endl;
-        std::cout << "\t\t: chunk[" << a->chunkSize/REC_SIZE << "-1]\t:\t" << chunk[h->getRecordsPerChunk() - 1] << std::endl;
-        delete[] chunk;
-    }
-    delete h;
-    std::cout << "readChunk done." << std::endl;
-    std::cout << "Thread(" << a->threadID << ") done." << std::endl;
-    
-}
 
 void debugger(int debug)
 {
@@ -139,30 +112,11 @@ void debugger(int debug)
         helperVec[1]->writeChunk(strArr, 2);
         // clean up
         
-        for(int i = 0; i<helperVec.size(); i++){
+        for(unsigned int i = 0; i<helperVec.size(); i++){
             delete helperVec[i];
         }
         // code block
         break;
-    }
-    case 7: // concurrent IO_Helper usage
-    {
-        // concurrent usage of IO_Helper.
-        int numRecordsPerChunk = 3;
-        // create 3 threads
-        pthread_t tidArr[3];
-        for(int i = 0; i < 3; i++){
-            struct args *a = (struct args*)malloc(sizeof(struct args));
-            a->threadID = i;
-            a->chunkSize = numRecordsPerChunk*REC_SIZE;
-            a->filename = "data/gs.out.test"+std::to_string(i);
-            pthread_create(&tidArr[i], NULL, thread_func, (void *)a);
-        }
-
-        // join all threads
-        for(int i = 0; i < 3; i++){
-            pthread_join(tidArr[i], NULL);
-        }
     }
     case 8: // Buffered_IO_Helper
     {
@@ -199,7 +153,7 @@ void debugger(int debug)
             helperVec.push_back(helperPtr);
         }
         // usage:
-        for(int i=0; i<helperVec.size(); i++){ // read all the chunks from all 3 helper pointers
+        for(unsigned int i=0; i<helperVec.size(); i++){ // read all the chunks from all 3 helper pointers
             std::cout << "Reading file:" << helperVec[i]->getFilename() << std::endl;
             while(helperVec[i]->isChunkAvailable()){
                 std::string *chunk = helperVec[i]->readChunk();
@@ -210,7 +164,7 @@ void debugger(int debug)
             }
         }
         // clean up
-        for(int i = 0; i<helperVec.size(); i++){
+        for(unsigned int i = 0; i<helperVec.size(); i++){
             delete helperVec[i];
         }
         // code block
@@ -257,16 +211,27 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // Sorting
+    
     std::string *chunk;
     Buffered_IO_Helper r_helper(filename, available_mem, available_mem);
     std::vector<Buffered_IO_Helper *> ext_helperVec;
     Buffered_IO_Helper *ext_helperPtr;
+    
+    // logs
+    std::fstream logFile;
+    if(r_helper.getFileSize()%1000000000!=0){ fprintf(stderr, "Filesize mismatch. Multiple of 1000000000 bytes?\n"); exit(EXIT_FAILURE);}
+    int fileSize = r_helper.getFileSize() / 1000000000;
+    std::string logfilename = "logs/mySort"+std::to_string(fileSize)+"GB.log";
+    logFile.open(logfilename, std::fstream::app);
+    auto timenow = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    logFile << std::ctime(&timenow);
+    auto start = std::chrono::steady_clock::now();
+    // Sorting
     r_helper.start_thread(); // Start the queue handler
-    std::cout << "Input filename: " << r_helper.getFilename() << std::endl;
+    logFile << "Input filename: " << r_helper.getFilename() << std::endl;\
     if(r_helper.getNumChunks()==1){
         // only do internal
-        std::cout << "Fits in memory. Proceeding internal heapSort..." << std::endl;
+        logFile << "Fits in memory. Proceeding internal heapSort..." << std::endl;
         chunk = r_helper.readChunk();
         int numRecordsPerChunk = r_helper.getRecordsPerChunk();
         heapSort(chunk, numRecordsPerChunk);
@@ -274,13 +239,12 @@ int main(int argc, char *argv[])
         IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
         w_helper.clearFile();
         w_helper.writeChunk(chunk, numRecordsPerChunk);
-        std::cout << "Internal heapSort done. (" << outputFilename << "). Exiting... " << std::endl;
-        return 0;
+        logFile << "Internal heapSort done. (" << outputFilename << ")." << std::endl;
     }else{
         // do chunked internal, then external
-        std::cout << "Does not fit in memory. available_mem=" << available_mem << ", fileSize=" << r_helper.getFileSize() << std::endl;
-        std::cout << "Proceeding with chunked internal heapSort(" << r_helper.getNumChunks() << "chunks), with external k-merge..." << std::endl; 
-        std::cout << "chunked internal heapSort..." << std::endl;
+        logFile << "Does not fit in memory. available_mem=" << available_mem << ", fileSize=" << r_helper.getFileSize() << std::endl;
+        logFile << "Proceeding with chunked internal heapSort(" << r_helper.getNumChunks() << "chunks), with external k-merge..." << std::endl; 
+        logFile << "chunked internal heapSort..." << std::endl;
         int i = 0;
         unsigned long input_buffer_size = available_mem / 2;
         unsigned long output_buffer_size = available_mem / 2;
@@ -301,15 +265,15 @@ int main(int argc, char *argv[])
             i++;
             
         }
-        std::cout << "external k-merge..." << std::endl;
-        for(int i=0; i<ext_helperVec.size(); i++){
+        logFile << "External k-way merge..." << std::endl;
+        for(unsigned int i=0; i<ext_helperVec.size(); i++){
             ext_helperVec[i]->start_thread(); // start to fill the buffers
         }
         externalSort(ext_helperVec, output_buffer_size);
-        std::cout << "Done." << std::endl;
-        return 0;
+        logFile << "External k-way merge done. (merge_output.txt)" << std::endl;
     }
-    
-    std::cout << "IMPLEMENTATION INCOMPLETE." << std::endl;
+    auto end = std::chrono::steady_clock::now();
+    logFile << "Done. Elapsed time in milliseconds : " << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count() << "ms."<< std::endl;
+    logFile.close();
     return 0;
 }

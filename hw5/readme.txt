@@ -1,26 +1,25 @@
 TODO: write me
 
 # To create data files with gensort, first download the binary from http://www.ordinal.com/gensort.html
-# run the script with
+# and run the script with
 ~/team-25/hw5$ ./src/scripts/createData.sh
 
-# makefile needed.
 # for now compile with
-~/team-25/hw5$ g++ src/main.cpp src/io.cpp src/external_sort.cpp src/internal_sort.cpp -o main
+~/team-25/hw5$ make clean; make
 
 # and run with
-~/team-25/hw5$ ./main [inputFileName] [memSize] [debugFlag(0/1/2/3)]
+~/team-25/hw5$ ./main [inputFileName] [memSize(in GB)] [debugFlag(0/1/2/3)]
 
-e.g. ./main file.txt 8 0 // for normal run
-     ./main file.txt 8 1 // for lance's branch
-     ./main file.txt 8 2 // for kevin's branch
+e.g. ./mySort file.txt 8 0 # for normal run
+     ./mySort file.txt 8 3 # for debug run, branch 3
+# code snippets of the class usages are included in the 
 
-./main file.txt 8 4 // readChunk example. Make sure the file data/gs.out.test exists.
-./main file.txt 8 5 // writeChunk example
+./mySort data/gs.out.1g 8 0 # load 1GB data, and sort with 8GB memory
+./mySort data/gs.out.4g 8 0 
+./mySort data/gs.out.16g 8 0 
+./mySort data/gs.out.64g 8 0 
 
-
-# Add your test code in your specified if-branch (main.cpp: line 29)
-
+# The log files is located in ~/team-25/hw5/logs
 
 # linux sort by ascii, run
-LC_ALL=C sort data/gs.out.test
+LC_ALL=C sort data/gs.out.1g > gs.out.1g.linux.sorted

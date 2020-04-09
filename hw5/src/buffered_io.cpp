@@ -82,8 +82,9 @@ void *buffer_thread_func(void *input){
         a->bufferQueue->push(chunk);
         sem_post(a->itemAvailable);
     }
-    std::cout << "Thread(" << a->ih->getFilename() << ") done." << std::endl;
+    std::cout << "BufferThread(" << a->ih->getFilename() << ") done." << std::endl;
     free(input);
+    return nullptr;
 }
 
 void Buffered_IO_Helper::start_thread(){

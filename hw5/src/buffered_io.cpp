@@ -40,6 +40,10 @@ unsigned long Buffered_IO_Helper::getCurrChunkIndex(){
     return headChunkIndex_;
 }
 
+void Buffered_IO_Helper::clearFile(){
+    return ih_->clearFile();
+}
+
 bool Buffered_IO_Helper::isChunkAvailable(){
 
     return ih_->getNumChunks() > headChunkIndex_; // still have unread chunks on disk or chunks in queue

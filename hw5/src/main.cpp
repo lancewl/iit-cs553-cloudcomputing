@@ -75,6 +75,17 @@ void debugger(int debug)
     case 3:
     {   
         // Idle...
+        unsigned long g = 1000000000;
+        int numChunks = 2;
+        unsigned long available_mem = numChunks * g;
+        std::vector<Buffered_IO_Helper *> ext_helperVec;
+        Buffered_IO_Helper *ext_helperPtr;
+        ext_helperPtr = new Buffered_IO_Helper("data/in_sorted-0.txt",  available_mem / numChunks, available_mem);
+        ext_helperVec.push_back(ext_helperPtr);
+        ext_helperPtr = new Buffered_IO_Helper("data/in_sorted-1.txt",  available_mem / numChunks, available_mem);
+        ext_helperVec.push_back(ext_helperPtr);
+        externalSort(ext_helperVec, available_mem);
+        
         // code block
         break;
     }
@@ -237,7 +248,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "User specified %ldGB of memory. Too large (MAX_MEM=%dGB)\n", memSize, MAX_MEM);
         exit(EXIT_FAILURE);
     }
-    memSize = memSize * 1073741824;
+    unsigned long available_mem = memSize * 1000000000; // in bytes, for easier alignment with records
 
     if (debug)
     { // debug runs
@@ -246,31 +257,59 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    //Internal Sorting
+    // Sorting
     std::string *chunk;
-    IO_Helper r_helper(filename, memSize);
-    std::vector<IO_Helper *> ext_helperVec;
-    IO_Helper *ext_helperPtr;
-    int i = 0;
-    while (r_helper.isChunkAvailable())
-    {
+    Buffered_IO_Helper r_helper(filename, available_mem, available_mem);
+    std::vector<Buffered_IO_Helper *> ext_helperVec;
+    Buffered_IO_Helper *ext_helperPtr;
+    r_helper.start_thread(); // Start the queue handler
+    std::cout << "Input filename: " << r_helper.getFilename() << std::endl;
+    if(r_helper.getNumChunks()==1){
+        // only do internal
+        std::cout << "Fits in memory. Proceeding internal heapSort..." << std::endl;
         chunk = r_helper.readChunk();
-        int size = r_helper.getRecordsPerChunk();
-        heapSort(chunk, size);
-        std::string outputFilename = "data/in_sorted-" + std::to_string(i) + ".txt";
+        int numRecordsPerChunk = r_helper.getRecordsPerChunk();
+        heapSort(chunk, numRecordsPerChunk);
+        std::string outputFilename = r_helper.getFilename() + ".sorted";
         IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
-        //TODO:need to cleare the sorted file before writing.
-        w_helper.writeChunk(chunk, size);
-        //create IO Helper and store it into the helper vector
-        ext_helperPtr = new IO_Helper(outputFilename, memSize / 2 / r_helper.getNumChunks());
-        ext_helperVec.push_back(ext_helperPtr);
-
-        delete[] chunk;
-        i++;
+        w_helper.clearFile();
+        w_helper.writeChunk(chunk, numRecordsPerChunk);
+        std::cout << "Internal heapSort done. (" << outputFilename << "). Exiting... " << std::endl;
+        return 0;
+    }else{
+        // do chunked internal, then external
+        std::cout << "Does not fit in memory. available_mem=" << available_mem << ", fileSize=" << r_helper.getFileSize() << std::endl;
+        std::cout << "Proceeding with chunked internal heapSort(" << r_helper.getNumChunks() << "chunks), with external k-merge..." << std::endl; 
+        std::cout << "chunked internal heapSort..." << std::endl;
+        int i = 0;
+        unsigned long input_buffer_size = available_mem / 2;
+        unsigned long output_buffer_size = available_mem / 2;
+        int queueSize = 5;
+        while (r_helper.isChunkAvailable())
+        {
+            chunk = r_helper.readChunk();
+            int size = r_helper.getRecordsPerChunk();
+            heapSort(chunk, size);
+            std::string outputFilename = "data/in_sorted-" + std::to_string(i) + ".txt";
+            IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
+            w_helper.clearFile();
+            w_helper.writeChunk(chunk, size);
+            delete[] chunk;
+            //create IO Helper and store it into the helper vector
+            ext_helperPtr = new Buffered_IO_Helper(outputFilename, input_buffer_size / r_helper.getNumChunks() / queueSize, input_buffer_size / r_helper.getNumChunks());
+            ext_helperVec.push_back(ext_helperPtr);
+            i++;
+            
+        }
+        std::cout << "external k-merge..." << std::endl;
+        for(int i=0; i<ext_helperVec.size(); i++){
+            ext_helperVec[i]->start_thread(); // start to fill the buffers
+        }
+        externalSort(ext_helperVec, output_buffer_size);
+        std::cout << "Done." << std::endl;
+        return 0;
     }
-    //TODO: If in memory can sort the data, no need to external sort
-    //External Sorting
-    externalSort(ext_helperVec, memSize/2);
+    
     std::cout << "IMPLEMENTATION INCOMPLETE." << std::endl;
     return 0;
 }

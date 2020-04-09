@@ -31,6 +31,14 @@ unsigned long IO_Helper::getCurrChunkIndex(){
     return currChunkIndex_;
 }
 
+void IO_Helper::clearFile(){
+    // close, remove the file, and reopen
+    file_.close();
+    remove(filename_.c_str());
+    openFile(filename_);
+    return;
+}
+
 
 bool IO_Helper::isChunkAvailable(){
     return currChunkIndex_ < numChunks_;

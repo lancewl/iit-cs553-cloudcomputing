@@ -18,6 +18,8 @@ class IO_Helper{
         unsigned long getNumChunks();
         unsigned long getCurrChunkIndex();
 
+        void clearFile(); // clean up the opened file
+
         bool isChunkAvailable(); // true if there are chunks left
         std::string* readChunk(); // returns a string array of that chunk
         void writeChunk(std::string* strArr, unsigned long numRecords); // append chunk to eof
@@ -49,6 +51,8 @@ class Buffered_IO_Helper{
         unsigned long getRecordsPerChunk();
         unsigned long getNumChunks();
         unsigned long getCurrChunkIndex();
+
+        void clearFile(); // clean up the opened file
 
         bool isChunkAvailable(); // true if there are chunks left
         std::string* readChunk(); // returns a string array of that chunk

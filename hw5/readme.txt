@@ -34,10 +34,10 @@ e.g. ./mySort file.txt 8 0 # for normal run, and sort file.txt with 8GB of memor
 
 
 # linux sort by ascii, run
-LC_ALL=C sort data/gs.out.1g > linux_sorted/gs.out.1g.linux.sorted
-LC_ALL=C sort data/gs.out.4g > linux_sorted/gs.out.4g.linux.sorted
-LC_ALL=C sort data/gs.out.16g > linux_sorted/gs.out.16g.linux.sorted
-LC_ALL=C sort data/gs.out.64g > linux_sorted/gs.out.64g.linux.sorted
+LC_ALL=C sort -S 8G data/gs.out.1g > linux_sorted/gs.out.1g.linux.sorted
+LC_ALL=C sort -S 8G data/gs.out.4g > linux_sorted/gs.out.4g.linux.sorted
+LC_ALL=C sort -S 8G data/gs.out.16g > linux_sorted/gs.out.16g.linux.sorted
+LC_ALL=C sort -S 8G data/gs.out.64g > linux_sorted/gs.out.64g.linux.sorted
 
 # check difference
 diff data/gs.out.1g linux_sorted/gs.out.1g.linux.sorted # output should be blank

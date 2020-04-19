@@ -1,5 +1,7 @@
-TODO: write me
-
+##########################
+#
+# Previously ran experiment log files are saved in hw5/saved_logs.
+#
 ##########################
 # To run all mySort experiments, use the script:
 ~/team-25/hw5$ screen -S mySortTest ./run_exp.sh

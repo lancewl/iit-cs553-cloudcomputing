@@ -6,6 +6,6 @@
 #include <string>
 #include <iostream>
 
-void externalSort(std::vector<Buffered_IO_Helper *> helperVec, long bufferSize);
+void externalSort(std::vector<IO_Helper *> helperVec, long bufferSize);
 
 #endif

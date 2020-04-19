@@ -10,8 +10,10 @@ IO_Helper::IO_Helper(std::string filename, unsigned long chunkSize){
     if (recordsPerChunk_ > numRecords_)
         recordsPerChunk_ = numRecords_;
     currChunkIndex_ = 0;
+    chunk_ = new std::string[recordsPerChunk_];
 }
 IO_Helper::~IO_Helper(){
+    delete[] chunk_;
     file_.close();
 }
 
@@ -45,17 +47,16 @@ bool IO_Helper::isChunkAvailable(){
 }
 
 std::string* IO_Helper::readChunk(){
-    std::string* chunk = new std::string[recordsPerChunk_];
     unsigned long i = 0;
     char buf[128];
     while(i < recordsPerChunk_){
         file_.getline(buf, 100);
         std::string s((const char *)buf); // std::string constructor
-        chunk[i] = s;
+        chunk_[i] = s;
         i++;
     }
     currChunkIndex_++;
-    return chunk;
+    return chunk_;
 }
 
 void IO_Helper::writeChunk(std::string* strArr, unsigned long numRecords){

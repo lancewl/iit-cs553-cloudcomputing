@@ -34,7 +34,7 @@ class IO_Helper{
         unsigned long numChunks_;
         unsigned long recordsPerChunk_;
         unsigned long currChunkIndex_;
-        
+        std::string *chunk_;
 
         void openFile(std::string fn); // open a file, and check the fileSize
         void closeFile();
@@ -66,8 +66,8 @@ class Buffered_IO_Helper{
         unsigned int maxItems_;
         unsigned long headChunkIndex_;
 
-        IO_Helper* ih_;
-        
+        IO_Helper *ih_;
+
         std::queue<std::string*>* bufferQueue_;
         sem_t itemAvailable_;
         sem_t haveSpace_;

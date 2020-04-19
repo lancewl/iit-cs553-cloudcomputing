@@ -57,7 +57,7 @@ void debugger(int debug)
         ext_helperVec.push_back(ext_helperPtr);
         ext_helperPtr = new Buffered_IO_Helper("data/in_sorted-1.txt",  available_mem / numChunks, available_mem);
         ext_helperVec.push_back(ext_helperPtr);
-        externalSort(ext_helperVec, available_mem);
+        //externalSort(ext_helperVec, available_mem);
         
         // code block
         break;
@@ -213,9 +213,9 @@ int main(int argc, char *argv[])
 
     
     std::string *chunk;
-    Buffered_IO_Helper r_helper(filename, available_mem, available_mem);
-    std::vector<Buffered_IO_Helper *> ext_helperVec;
-    Buffered_IO_Helper *ext_helperPtr;
+    IO_Helper r_helper(filename, available_mem);
+    std::vector<IO_Helper *> ext_helperVec;
+    IO_Helper *ext_helperPtr;
     
     // logs
     std::fstream logFile;
@@ -227,7 +227,7 @@ int main(int argc, char *argv[])
     logFile << std::ctime(&timenow);
     auto start = std::chrono::steady_clock::now();
     // Sorting
-    r_helper.start_thread(); // Start the queue handler
+    //r_helper.start_thread(); // Start the queue handler
     logFile << "Input filename: " << r_helper.getFilename() << std::endl;\
     if(r_helper.getNumChunks()==1){
         // only do internal
@@ -258,16 +258,16 @@ int main(int argc, char *argv[])
             IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
             w_helper.clearFile();
             w_helper.writeChunk(chunk, size);
-            delete[] chunk;
+            //delete[] chunk;
             //create IO Helper and store it into the helper vector
-            ext_helperPtr = new Buffered_IO_Helper(outputFilename, input_buffer_size / r_helper.getNumChunks() / queueSize, input_buffer_size / r_helper.getNumChunks());
+            ext_helperPtr = new IO_Helper(outputFilename, input_buffer_size / r_helper.getNumChunks());
             ext_helperVec.push_back(ext_helperPtr);
             i++;
             
         }
         logFile << "External k-way merge..." << std::endl;
         for(unsigned int i=0; i<ext_helperVec.size(); i++){
-            ext_helperVec[i]->start_thread(); // start to fill the buffers
+            //ext_helperVec[i]->start_thread(); // start to fill the buffers
         }
         externalSort(ext_helperVec, output_buffer_size);
         logFile << "External k-way merge done. (merge_output.txt)" << std::endl;

@@ -2,7 +2,7 @@
 
 #define REC_SIZE 100 // in bytes
 
-void externalSort(std::vector<Buffered_IO_Helper *> helperVec, long bufferSize)
+void externalSort(std::vector<IO_Helper *> helperVec, long bufferSize)
 {
     int heap_size = helperVec.size();
     int arr_size[heap_size];

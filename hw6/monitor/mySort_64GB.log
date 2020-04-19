@@ -1,8 +1,3 @@
-Sun Apr 19 06:39:36 2020
-Input filename: gs.out
-Does not fit in memory. available_mem=8000000000, fileSize=64000000000
-Proceeding with chunked internal heapSort(8chunks), with external k-merge...
-chunked internal heapSort...
 Sun Apr 19 08:56:27 2020
 Input filename: gs.out
 Does not fit in memory. available_mem=8000000000, fileSize=64000000000

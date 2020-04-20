@@ -10,7 +10,7 @@ echo "Generating $1 GB dataset..."
 gensort -a $((10000000*$1)) gs.out
 
 echo "Sorting $1 GB dataset..."
-pidstat -rudh --human 1 -e ./mySort gs.out 8 > monitor/mySort_$1G_mon.log
+pidstat -rudhI 1 -e ./mySort gs.out 8 > monitor/mySort_$1G_mon.log
 
 echo "Validating sorted data..."
 valsort sort.out

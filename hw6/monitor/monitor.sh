@@ -8,14 +8,13 @@ fi
 
 if [ $1 -eq 0 ]
 then
-    SORT = "./mySort gs.out 8"
+    SORT = './mySort gs.out 8'
     OUT = "monitor/mySort_$2G_mon"
 elif [ $1 -eq 1 ]
 then
-    SORT = "sort -o sort.out gs.out"
+    SORT = 'sort -o sort.out gs.out'
     OUT = "monitor/LinuxSort_$2G_mon"
 else
-then
     echo "Wrong Sorting Mode. [0 mySort | 1 Linux Sort]"
     exit
 fi

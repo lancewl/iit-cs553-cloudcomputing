@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
         chunk = r_helper.readChunk();
         int numRecordsPerChunk = r_helper.getRecordsPerChunk();
         heapSort(chunk, numRecordsPerChunk);
-        std::string outputFilename = r_helper.getFilename() + ".sorted";
+        std::string outputFilename = "sort.out";
         IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
         w_helper.clearFile();
         w_helper.writeChunk(chunk, numRecordsPerChunk);

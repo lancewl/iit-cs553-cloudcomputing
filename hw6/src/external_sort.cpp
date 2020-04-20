@@ -7,7 +7,7 @@ void externalSort(std::vector<IO_Helper *> helperVec, long bufferSize)
     int heap_size = helperVec.size();
     int arr_size[heap_size];
     std::string *arr[heap_size];
-    IO_Helper w_helper("merge_output.txt", 9999);
+    IO_Helper w_helper("sort.out", 9999);
     w_helper.clearFile();
     std::string *output = new std::string [bufferSize / REC_SIZE];
     MinHeapNode *harr = new MinHeapNode[heap_size];

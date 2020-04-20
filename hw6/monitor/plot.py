@@ -1,7 +1,8 @@
+import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_table("mySort_16G_monitor.log", sep="\s+", skiprows=1, header=None)
+df = pd.read_table(sys.argv[1], sep="\s+", skiprows=1, header=None)
 df = df.drop_duplicates()
 df = df.drop(0)
 df = df.iloc[:, :-1]

@@ -6,24 +6,24 @@ then
     exit
 fi
 
-if [ $1 -eq 0 ]
-then
-    SORT = './mySort gs.out 8'
-    OUT = "monitor/mySort_$2G_mon"
-elif [ $1 -eq 1 ]
-then
-    SORT = 'sort -o sort.out gs.out'
-    OUT = "monitor/LinuxSort_$2G_mon"
-else
-    echo "Wrong Sorting Mode. [0 mySort | 1 Linux Sort]"
-    exit
-fi
-
 echo "Generating $2 GB dataset..."
 gensort -a $((10000000*$2)) gs.out
 
-echo "Sorting $2 GB dataset..."
-pidstat -rudhI 1 -e ${SORT} > ${OUT}.log
+if [ $1 -eq 0 ]
+then
+    OUT = "monitor/mySort_$2G_mon"
+    echo "Sorting $2 GB dataset by mySort..."
+    pidstat -rudhI 1 -e  ./mySort gs.out 8 > ${OUT}.log
+elif [ $1 -eq 1 ]
+then
+    OUT = "monitor/LinuxSort_$2G_mon"
+    echo "Sorting $2 GB dataset by Linux Sort..."
+    pidstat -rudhI 1 -e  sort -o sort.out gs.out > ${OUT}.log
+else
+    echo "Wrong Sorting Mode. [0 mySort | 1 Linux Sort]"
+    rm gs.out
+    exit
+fi
 
 echo "Validating sorted data..."
 valsort sort.out

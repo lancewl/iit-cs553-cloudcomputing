@@ -8,11 +8,10 @@ df = df.drop(0)
 df = df.iloc[:, :-1]
 df.columns = ['Time','UID','PID','%usr','%system','%guest','%wait','%CPU','CPU','minflt/s','majflt/s','VSZ','RSS','%MEM','kB_rd/s','kB_wr/s','kB_ccwr/s','iodelay','Command']
 x_data = df[['%CPU', 'RSS', 'kB_rd/s', 'kB_wr/s']]
-x_data.loc[:,'%CPU'] = x_data.loc[:,'%CPU'].map(lambda x: x.rstrip('%'))
-x_data.loc[:,'RSS'] = x_data.loc[:,'RSS'].map(lambda x: x.rstrip('GMk'))
-x_data.loc[:,'kB_rd/s'] = x_data.loc[:,'kB_rd/s'].map(lambda x: x.rstrip('MBk'))
-x_data.loc[:,'kB_wr/s'] = x_data.loc[:,'kB_wr/s'].map(lambda x: x.rstrip('MBk'))
 x_data=x_data.astype(float)
+x_data.loc[:,'RSS'] = x_data.loc[:,'RSS'].apply(lambda x: x/1000000) #transform kB to GB
+x_data.loc[:,'kB_rd/s'] = x_data.loc[:,'kB_rd/s'].apply(lambda x: x/1000) #transform kB to MB
+x_data.loc[:,'kB_wr/s'] = x_data.loc[:,'kB_wr/s'].apply(lambda x: x/1000) #transform kB to MB
 y_data = list(range(x_data.shape[0]))
 
 def make_patch_spines_invisible(ax):

@@ -75,4 +75,4 @@ lines = [p1, p2, p3, p4]
 
 host.legend(lines, [l.get_label() for l in lines])
 
-plt.show()
+plt.savefig(sys.argv[2])

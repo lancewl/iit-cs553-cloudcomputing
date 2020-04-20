@@ -42,18 +42,18 @@ int main(int argc, char *argv[])
     unsigned long available_mem = memSize * 1000000000; // in bytes, for easier alignment with records
 
     std::string *chunk;
-    IO_Helper r_helper(filename, available_mem);
+    IO_Helper *r_helper = new IO_Helper(filename, available_mem);
     std::vector<IO_Helper *> ext_helperVec;
     IO_Helper *ext_helperPtr;
 
     // logs
     std::fstream logFile;
-    if (r_helper.getFileSize() % 1000000000 != 0)
+    if (r_helper->getFileSize() % 1000000000 != 0)
     {
         fprintf(stderr, "Filesize mismatch. Multiple of 1000000000 bytes?\n");
         exit(EXIT_FAILURE);
     }
-    int fileSize = r_helper.getFileSize() / 1000000000;
+    int fileSize = r_helper->getFileSize() / 1000000000;
     std::string logfilename = "logs/mySort" + std::to_string(fileSize) + "GB.log";
     logFile.open(logfilename, std::fstream::app);
     auto timenow = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
@@ -61,13 +61,13 @@ int main(int argc, char *argv[])
     auto start = std::chrono::steady_clock::now();
     // Sorting
     //r_helper.start_thread(); // Start the queue handler
-    logFile << "Input filename: " << r_helper.getFilename() << std::endl;
-    if (r_helper.getNumChunks() == 1)
+    logFile << "Input filename: " << r_helper->getFilename() << std::endl;
+    if (r_helper->getNumChunks() == 1)
     {
         // only do internal
         logFile << "Fits in memory. Proceeding internal heapSort..." << std::endl;
-        chunk = r_helper.readChunk();
-        int numRecordsPerChunk = r_helper.getRecordsPerChunk();
+        chunk = r_helper->readChunk();
+        int numRecordsPerChunk = r_helper->getRecordsPerChunk();
         heapSort(chunk, numRecordsPerChunk);
         std::string outputFilename = "sort.out";
         IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
@@ -78,27 +78,27 @@ int main(int argc, char *argv[])
     else
     {
         // do chunked internal, then external
-        logFile << "Does not fit in memory. available_mem=" << available_mem << ", fileSize=" << r_helper.getFileSize() << std::endl;
-        logFile << "Proceeding with chunked internal heapSort(" << r_helper.getNumChunks() << "chunks), with external k-merge..." << std::endl;
+        logFile << "Does not fit in memory. available_mem=" << available_mem << ", fileSize=" << r_helper->getFileSize() << std::endl;
+        logFile << "Proceeding with chunked internal heapSort(" << r_helper->getNumChunks() << "chunks), with external k-merge..." << std::endl;
         logFile << "chunked internal heapSort..." << std::endl;
         int i = 0;
         unsigned long input_buffer_size = available_mem / 2;
         unsigned long output_buffer_size = available_mem / 2;
-        while (r_helper.isChunkAvailable())
+        while (r_helper->isChunkAvailable())
         {
-            chunk = r_helper.readChunk();
-            int size = r_helper.getRecordsPerChunk();
+            chunk = r_helper->readChunk();
+            int size = r_helper->getRecordsPerChunk();
             heapSort(chunk, size);
             std::string outputFilename = "data/in_sorted-" + std::to_string(i) + ".txt";
             IO_Helper w_helper(outputFilename, 9999); // for writeChunk, chunkSize arg does not matter.
             w_helper.clearFile();
             w_helper.writeChunk(chunk, size);
             //create IO Helper and store it into the helper vector
-            ext_helperPtr = new IO_Helper(outputFilename, input_buffer_size / r_helper.getNumChunks());
+            ext_helperPtr = new IO_Helper(outputFilename, input_buffer_size / r_helper->getNumChunks());
             ext_helperVec.push_back(ext_helperPtr);
             i++;
         }
-        delete &r_helper;
+        delete r_helper;
         logFile << "External k-way merge..." << std::endl;
         externalSort(ext_helperVec, output_buffer_size);
         logFile << "External k-way merge done. (merge_output.txt)" << std::endl;

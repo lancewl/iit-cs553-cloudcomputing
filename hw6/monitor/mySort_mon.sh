@@ -20,3 +20,4 @@ python3 monitor/plot.py monitor/mySort_$1G_mon.log monitor/mySort_$1G_mon.png
 
 echo "removing the datasets"
 rm gs.out sort.out
+rm data/in_sorted*

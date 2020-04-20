@@ -1,230 +1,224 @@
 Linux 4.15.0-96-generic (large_instance) 	04/20/20 	_x86_64_	(16 CPU)
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:44     1000     10223   46.00   52.00    0.00    0.00    6.14    10 177563.00      0.00  723848  713076   2.16 355056.00      4.00      0.00       0  mySort
+06:51:07     1000     10470   47.00   52.00    0.00    0.00    6.20     1 184622.00      0.00  752228  741292   2.25 380272.00      4.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:45     1000     10223   48.00   50.00    0.00    0.00    6.16    10 115843.00      0.00 1187300 1176396   3.57 413696.00      0.00      0.00       2  mySort
+06:51:08     1000     10470   49.00   50.00    0.00    0.00    6.21     1 124445.00      0.00 1250000 1239196   3.76 444416.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:46     1000     10223   78.00   20.00    0.00    0.00    6.13    10  58260.00      0.00 1420280 1409508   4.28 207808.00      0.00      0.00       2  mySort
+06:51:09     1000     10470   83.00   17.00    0.00    0.00    6.25     1  42589.00      0.00 1420280 1409476   4.28 151872.00      0.00      0.00       1  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:47     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:10     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:48     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:11     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:49     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:12     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:50     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:13     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:51     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:14     1000     10470  100.00    0.00    0.00    0.00    6.24     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:52     1000     10223  100.00    0.00    0.00    0.00    6.27    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:15     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:53     1000     10223   99.00    0.00    0.00    0.00    6.19    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:16     1000     10470   99.00    0.00    0.00    0.00    6.19     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:54     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:17     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:55     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:18     1000     10470  100.00    0.00    0.00    0.00    6.24     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:56     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:19     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:57     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:20     1000     10470  100.00    0.00    0.00    0.00    6.24     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:58     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:21     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:39:59     1000     10223  100.00    0.00    0.00    1.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:22     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:00     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:23     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:01     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:24     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:02     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:25     1000     10470  100.00    0.00    0.00    0.00    6.27     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:03     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:26     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:04     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:27     1000     10470  100.00    0.00    0.00    0.00    6.32     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:05     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:28     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:06     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:29     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:07     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:30     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:08     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:31     1000     10470   99.00    0.00    0.00    0.00    6.20     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:09     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:32     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:10     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:33     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:11     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:34     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:12     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:35     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:13     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:36     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:14     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:37     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:15     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:38     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:16     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:39     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:17     1000     10223  100.00    0.00    0.00    1.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:40     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:18     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:41     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:19     1000     10223   99.00    0.00    0.00    0.00    6.20    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:42     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:20     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:43     1000     10470  100.00    0.00    0.00    1.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:21     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:44     1000     10470   99.01    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:22     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:45     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:23     1000     10223   99.01    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:46     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:24     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:47     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:25     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:48     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:26     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:49     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:27     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:50     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:28     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:51     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:29     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:52     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:30     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:53     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:31     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:54     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:32     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:55     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:33     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:56     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:34     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:57     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:35     1000     10223  100.00    0.00    0.00    0.00    6.24    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:58     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:36     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:51:59     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:37     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:52:00     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:38     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:52:01     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:39     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:52:02     1000     10470  100.00    0.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:40     1000     10223  100.00    0.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:52:03     1000     10470   64.00   37.00    0.00    0.00    6.32     1      1.00      0.00 1420280 1409476   4.28      0.00  34744.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:41     1000     10223  100.00    0.00    0.00    1.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:52:04     1000     10470   26.00   74.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00  64704.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:42     1000     10223   42.00   58.00    0.00    0.00    6.27    10      1.00      0.00 1420280 1409508   4.28      0.00  54652.00      0.00       0  mySort
+06:52:05     1000     10470   32.00   68.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00  65400.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:43     1000     10223   32.00   68.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00  64396.00      0.00       0  mySort
+06:52:06     1000     10470   32.00   67.00    0.00    0.00    6.20     1      0.00      0.00 1420280 1409476   4.28      0.00  65584.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:44     1000     10223   29.00   71.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00  65008.00      0.00       0  mySort
+06:52:07     1000     10470   33.00   66.00    0.00    0.00    6.20     1      0.00      0.00 1420280 1409476   4.28      0.00  65684.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:45     1000     10223   35.00   66.00    0.00    0.00    6.31    10      0.00      0.00 1420280 1409508   4.28      0.00  65340.00      0.00       0  mySort
+06:52:08     1000     10470   33.00   68.00    0.00    0.00    6.32     1      0.00      0.00 1420280 1409476   4.28      0.00  65548.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:46     1000     10223   27.00   72.00    0.00    0.00    6.20    10      0.00      0.00 1420280 1409508   4.28      0.00  65080.00      0.00       0  mySort
+06:52:09     1000     10470   29.00   70.00    0.00    0.00    6.18     1      0.00      0.00 1420280 1409476   4.28      0.00  65568.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:47     1000     10223   36.00   64.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00  64660.00      0.00       0  mySort
+06:52:10     1000     10470   26.00   75.00    0.00    0.00    6.31     1      0.00      0.00 1420280 1409476   4.28      0.00  64388.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:48     1000     10223   29.00   71.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00  64860.00      0.00       0  mySort
+06:52:11     1000     10470   31.00   69.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00  65436.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:49     1000     10223   33.00   67.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00  65412.00      0.00       0  mySort
+06:52:12     1000     10470   31.00   69.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00  65508.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:50     1000     10223   28.00   72.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00  65492.00      0.00       0  mySort
+06:52:13     1000     10470   34.00   66.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00  65484.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:51     1000     10223   23.00   77.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00  65440.00      0.00       0  mySort
+06:52:14     1000     10470   34.00   65.00    0.00    0.00    6.20     1      0.00      0.00 1420280 1409476   4.28      0.00  65384.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:52     1000     10223   32.00   68.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00  65152.00      0.00       0  mySort
+06:52:15     1000     10470   30.00   71.00    0.00    0.00    6.32     1      0.00      0.00 1420280 1409476   4.28      0.00  65604.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:53     1000     10223   29.00   71.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00  65228.00      0.00       0  mySort
+06:52:16     1000     10470   34.00   65.00    0.00    0.00    6.19     1      0.00      0.00 1420280 1409476   4.28      0.00  65632.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:54     1000     10223   29.00   71.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00  65156.00      0.00       0  mySort
+06:52:17     1000     10470   35.00   65.00    0.00    0.00    6.25     1      0.00      0.00 1420280 1409476   4.28      0.00  65612.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:55     1000     10223   32.00   67.00    0.00    0.00    6.19    10      0.00      0.00 1420280 1409508   4.28      0.00  65308.00      0.00       0  mySort
+06:52:18     1000     10470   74.00   26.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00  26292.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:56     1000     10223   34.00   67.00    0.00    0.00    6.32    10      0.00      0.00 1420280 1409508   4.28      0.00  65416.00      0.00       0  mySort
+06:52:19     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:57     1000     10223   90.00   10.00    0.00    0.00    6.26    10      0.00      0.00 1420280 1409508   4.28      0.00   9972.00      0.00       0  mySort
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:58     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:40:59     1000     10223  100.00    0.00    0.00    0.00    6.25    10      0.00      0.00 1420280 1409508   4.28      0.00      0.00      0.00       0  mySort
+06:52:20     1000     10470  100.00    0.00    0.00    0.00    6.26     1      0.00      0.00 1420280 1409476   4.28      0.00      0.00      0.00       0  mySort
 

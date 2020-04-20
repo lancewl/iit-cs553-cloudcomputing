@@ -98,11 +98,8 @@ int main(int argc, char *argv[])
             ext_helperVec.push_back(ext_helperPtr);
             i++;
         }
+        delete &r_helper;
         logFile << "External k-way merge..." << std::endl;
-        for (unsigned int i = 0; i < ext_helperVec.size(); i++)
-        {
-            //ext_helperVec[i]->start_thread(); // start to fill the buffers
-        }
         externalSort(ext_helperVec, output_buffer_size);
         logFile << "External k-way merge done. (merge_output.txt)" << std::endl;
     }

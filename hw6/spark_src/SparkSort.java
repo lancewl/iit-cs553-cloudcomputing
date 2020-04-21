@@ -7,12 +7,12 @@ public class SparkSort {
 		SparkConf sparkConf = new SparkConf().setAppName("SparkSort");
 		JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
 		String in = "hdfs://192.168.122.147:9000/home/input/test.out";
-		String out = "hdfs://192.168.122.147:9000/home/output/data3.out";
+		String out = "hdfs://192.168.122.147:9000/home/output/data.out";
 		JavaRDD<String> textFile = sparkContext.textFile(in);
-		JavaPairRDD<String, Integer> counts = textFile
+		JavaPairRDD<String, Integer> sort = textFile
 			.flatMap(s -> Arrays.asList(s).iterator()) 
 			.mapToPair(word -> new Tuple2<>(word, 1))
 			.sortByKey();
-		counts.saveAsTextFile(out);
+		sort.keys().coalesce(1).saveAsTextFile(out);
 	}
 }

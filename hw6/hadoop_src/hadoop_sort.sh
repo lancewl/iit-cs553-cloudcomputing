@@ -56,16 +56,16 @@ rm -rf ./data/*
 
 ##############################
 # Recompile the Sort.jar
-javac -Xdiags:verbose -classpath ${HADOOP_CLASSPATH} -d ./hadoop_src/Sort/ ./hadoop_src/Sort/Sort.java
-jar -cvf ./Sort.jar -C ./hadoop_src/Sort/ .
+javac -Xdiags:verbose -classpath ${HADOOP_CLASSPATH} -d ./Sort/ ./Sort/Sort.java
+jar -cvf ./Sort.jar -C ./Sort/ .
 
 # kill a specific job with
 # bin/mapred job -list
 # bin/mapred job -kill [jobid]
 
 # run hadoop sort on gensort data
-mkdir ~/team-25/hw6/hadoop_src/logs
-{ time $HADOOP_PATH/bin/hadoop jar ./Sort.jar Sort /home/input/gensort/$NAME.gen /home/output/gensort/$NAME.sorted ; } 2>./hadoop_src/logs/$NAME.time.txt
+mkdir -p logs
+{ time $HADOOP_PATH/bin/hadoop jar ./Sort.jar Sort /home/input/gensort/$NAME.gen /home/output/gensort/$NAME.sorted ; } 2>./logs/$NAME.time.txt
 
 # fetch the output from hdfs
 # $HADOOP_PATH/bin/hadoop fs -mergeget /home/output/gensort/$NAME.sorted ./data

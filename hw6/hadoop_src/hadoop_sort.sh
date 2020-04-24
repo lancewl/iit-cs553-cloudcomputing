@@ -65,13 +65,13 @@ jar -cvf $PRJ_DIR/hadoop_jar/Sort.jar -C $PRJ_DIR/hadoop_src/Sort/ .
 # bin/mapred job -kill [jobid]
 
 # run hadoop sort on gensort data
-mkdir $PRJ_DIR/timed_results
-{ time $HADOOP_PATH/bin/hadoop jar $PRJ_DIR/hadoop_jar/Sort.jar Sort /home/input/gensort/$NAME.gen /home/output/gensort/$NAME.sorted ; } 2>$PRJ_DIR/timed_results/$NAME.time.txt
+mkdir ~/team-25/hw6/hadoop_src/logs
+{ time $HADOOP_PATH/bin/hadoop jar $PRJ_DIR/hadoop_jar/Sort.jar Sort /home/input/gensort/$NAME.gen /home/output/gensort/$NAME.sorted ; } 2>~/team-25/hw6/hadoop_src/logs/$NAME.time.txt
 
 # fetch the output from hdfs
 # $HADOOP_PATH/bin/hadoop fs -mergeget /home/output/gensort/$NAME.sorted ~/data
 # validate with valsort, by hand
-# { $PRJ_DIR/gensort-1.5/valsort ~/data/$NAME.sorted/part-r-00000 ; } 2> $PRJ_DIR/timed_results/$NAME.valsort.txt
+# { $PRJ_DIR/gensort-1.5/valsort ~/data/$NAME.sorted/part-r-00000 ; } 2> ~/team-25/hw6/hadoop_src/logs/$NAME.valsort.txt
 
 # cleanup everything
 rm -rf ~/data/*

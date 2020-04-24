@@ -14,7 +14,7 @@ $HADOOP_HOME/bin/hadoop fs -put gs.out /home/input/
 rm gs.out
 
 echo "Spark Sorting..."
-$SPARK_HOME/bin/spark-submit --class SparkSort --master yarn --deploy-mode cluster --driver-memory 4g --executor-memory 2g --executor-cores 1 SparkSort.jar
+{ time $SPARK_HOME/bin/spark-submit --class SparkSort --master yarn --deploy-mode cluster --driver-memory 4g --executor-memory 2g --executor-cores 1 SparkSort.jar;} 2> $1G_time.txt
 
 echo "Exporting output from HDFS..."
 $HADOOP_HOME/bin/hadoop fs -getmerge /home/output/data.out/ sort.out

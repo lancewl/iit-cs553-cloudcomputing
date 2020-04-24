@@ -23,7 +23,7 @@ echo "Generating $2 GB dataset..."
 gensort -a $((10000000*$2)) gs.out
 
 echo "Sorting $2 GB dataset..."
-pidstat -rudhI 1 -e ${SORT} > ${OUT}.log
+{ time pidstat -rudhI 1 -e ${SORT} > ${OUT}.log;} 2> ${OUT}.time
 
 echo "Validating sorted data..."
 valsort sort.out

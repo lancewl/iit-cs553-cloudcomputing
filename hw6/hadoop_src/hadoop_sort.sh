@@ -68,12 +68,12 @@ mkdir ~/team-25/hw6/hadoop_src/logs
 { time $HADOOP_PATH/bin/hadoop jar ./Sort.jar Sort /home/input/gensort/$NAME.gen /home/output/gensort/$NAME.sorted ; } 2>./hadoop_src/logs/$NAME.time.txt
 
 # fetch the output from hdfs
-# $HADOOP_PATH/bin/hadoop fs -mergeget /home/output/gensort/$NAME.sorted ~/data
+# $HADOOP_PATH/bin/hadoop fs -mergeget /home/output/gensort/$NAME.sorted ./data
 # validate with valsort, by hand
-# { $PRJ_DIR/gensort-1.5/valsort ~/data/$NAME.sorted/part-r-00000 ; } 2> ~/team-25/hw6/hadoop_src/logs/$NAME.valsort.txt
+# { $PRJ_DIR/gensort-1.5/valsort ./data/$NAME.sorted/part-r-00000 ; } 2> ./hadoop_src/logs/$NAME.valsort.txt
 
 # cleanup everything
-rm -rf ./data/*
+rm -rf ./data
 $HADOOP_PATH/bin/hadoop fs -rm -r /home/input/gensort/*
 $HADOOP_PATH/bin/hadoop fs -rm -r /home/output/gensort/*
 

@@ -69,7 +69,7 @@ mkdir $PRJ_DIR/timed_results
 { time $HADOOP_PATH/bin/hadoop jar $PRJ_DIR/hadoop_jar/Sort.jar Sort /home/input/gensort/$NAME.gen /home/output/gensort/$NAME.sorted ; } 2>$PRJ_DIR/timed_results/$NAME.time.txt
 
 # fetch the output from hdfs
-# $HADOOP_PATH/bin/hadoop fs -get /home/output/gensort/$NAME.sorted ~/data
+# $HADOOP_PATH/bin/hadoop fs -mergeget /home/output/gensort/$NAME.sorted ~/data
 # validate with valsort, by hand
 # { $PRJ_DIR/gensort-1.5/valsort ~/data/$NAME.sorted/part-r-00000 ; } 2> $PRJ_DIR/timed_results/$NAME.valsort.txt
 

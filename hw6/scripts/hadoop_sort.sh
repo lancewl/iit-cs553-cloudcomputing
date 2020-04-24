@@ -12,6 +12,8 @@
 # ls hadoop_jar
 ################################
 
+SIZE_G=$1
+
 # Paths to dirs and jars
 PRJ_DIR=/exports/projects
 HADOOP_PATH=$PRJ_DIR/hadoop-3.2.1
@@ -27,6 +29,8 @@ $HADOOP_PATH/bin/hadoop fs -rm -r /home/output/gensort/*
 # set up dirs
 mkdir ~/data
 # on hadoop
+$HADOOP_PATH/bin/hadoop fs -mkdir /home/input
+$HADOOP_PATH/bin/hadoop fs -mkdir /home/input/gensort
 $HADOOP_PATH/bin/hadoop fs -mkdir /home/output
 $HADOOP_PATH/bin/hadoop fs -mkdir /home/output/gensort
 
@@ -42,8 +46,8 @@ $HADOOP_PATH/bin/hadoop fs -mkdir /home/output/gensort
 # $HADOOP_PATH/bin/hadoop jar $MAPRED_EXAMPLES_JAR teragen $SIZE /home/input/tera/$NAME.gen
 
 # use gensort for workload data
-SIZE=$((10000000*64)) # 
-NAME=64g
+SIZE=$((10000000*$SIZE_G)) # 
+NAME=$SIZE_G.g
 $PRJ_DIR/gensort-1.5/gensort -a $SIZE ~/data/$NAME.gen
 # put on hdfs
 $HADOOP_PATH/bin/hadoop fs -put ~/data/$NAME.gen /home/input/gensort/$NAME.gen
@@ -65,11 +69,12 @@ mkdir $PRJ_DIR/timed_results
 { time $HADOOP_PATH/bin/hadoop jar $PRJ_DIR/hadoop_jar/Sort.jar Sort /home/input/gensort/$NAME.gen /home/output/gensort/$NAME.sorted ; } 2>$PRJ_DIR/timed_results/$NAME.time.txt
 
 # fetch the output from hdfs
-$HADOOP_PATH/bin/hadoop fs -get /home/output/gensort/$NAME.sorted ~/data
-# validate with valsort
-{ $PRJ_DIR/gensort-1.5/valsort ~/data/$NAME.sorted } >$PRJ_DIR/timed_results/$NAME.valsort.txt
+# $HADOOP_PATH/bin/hadoop fs -get /home/output/gensort/$NAME.sorted ~/data
+# validate with valsort, by hand
+# { $PRJ_DIR/gensort-1.5/valsort ~/data/$NAME.sorted/part-r-00000 ; } 2> $PRJ_DIR/timed_results/$NAME.valsort.txt
 
 # cleanup everything
 rm -rf ~/data/*
 $HADOOP_PATH/bin/hadoop fs -rm -r /home/input/gensort/*
 $HADOOP_PATH/bin/hadoop fs -rm -r /home/output/gensort/*
+

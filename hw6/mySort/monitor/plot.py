@@ -49,8 +49,8 @@ p4, = par3.plot(y_data, x_data.loc[:,'kB_wr/s'], "y-", label="write", markersize
 #host.set_xlim(0, 2)
 host.set_ylim(0, 100)
 par1.set_ylim(0, 32)
-par2.set_ylim(0, 1000)
-par3.set_ylim(0, 1000)
+par2.set_ylim(0, 1200)
+par3.set_ylim(0, 1200)
 
 host.set_xlabel("Time(s)")
 host.set_ylabel("CPU(%)")

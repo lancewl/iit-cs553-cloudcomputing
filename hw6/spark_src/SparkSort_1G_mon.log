@@ -1,27 +1,6 @@
 Linux 4.15.0-96-generic (team25-hw6) 	04/25/20 	_x86_64_	(48 CPU)
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:58:13    64055      4870    4.00   42.00  100.00    0.00    5.49     1     78.00      0.00 59521256 33594536  17.09      0.00 131628.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:58:14    64055      4870    8.00    6.00  100.00    0.00    4.99     3     38.00      0.00 59521256 33594536  17.09      0.00      4.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:58:15    64055      4870    0.00   18.00   10.00    0.00    0.50     3      5.00      0.00 59521256 33594536  17.09      0.00      0.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:58:16    64055      4870    2.00   15.00   33.00    0.00    1.04     3     28.00      0.00 59521256 33594536  17.09      0.00    120.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:58:17    64055      4870   19.00  100.00  100.00    0.00   16.64    21   3982.00      0.00 59521256 33594544  17.09      0.00     52.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:58:18    64055      4870   19.00  100.00  100.00    0.00   11.41    21   6907.00      0.00 59521256 33594544  17.09      0.00     36.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:58:19    64055      4870    1.00   10.00  100.00    0.00    3.19    21     89.00      0.00 59521256 33594544  17.09      0.00     64.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
 06:58:20    64055      4870    9.00   66.00  100.00    0.00    8.83    21     38.00      0.00 59521256 33594544  17.09      0.00 131696.00      0.00       0  qemu-system-x86
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
@@ -314,28 +293,3 @@ Linux 4.15.0-96-generic (team25-hw6) 	04/25/20 	_x86_64_	(48 CPU)
 
 # Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
 06:59:57    64055      4870    0.00   12.00  100.00    0.00    6.18    25   2745.00      0.00 59644196 33594788  17.09      0.00      0.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:59:58    64055      4870    0.00   15.00  100.00    0.00    3.84    25   5536.00      0.00 59644196 33594788  17.09      0.00      0.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-06:59:59    64055      4870   10.00    0.00  100.00    0.00    3.57    25   5386.00      0.00 59644196 33594788  17.09      0.00    300.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-07:00:00    64055      4870    0.00   12.00  100.00    0.00    2.46    25    408.00      0.00 59644196 33594788  17.09      0.00     32.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-07:00:01    64055      4870    0.00    4.00  100.00    0.00    2.46    10    901.00      0.00 59644196 33594788  17.09      0.00    124.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-07:00:02    64055      4870    1.00    1.00  100.00    0.00    2.31    10   1691.00      0.00 59644196 33594788  17.09      0.00      0.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-07:00:03    64055      4870    2.00    3.00  100.00    0.00    2.36    10   2009.00      0.00 59644196 33594788  17.09      0.00      0.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-07:00:04    64055      4870    1.00    2.00  100.00    0.00    2.34    10   1062.00      0.00 59644196 33594788  17.09      0.00      0.00      0.00       0  qemu-system-x86
-
-# Time        UID       PID    %usr %system  %guest   %wait    %CPU   CPU  minflt/s  majflt/s     VSZ     RSS   %MEM   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
-07:00:05    64055      4870    0.00    2.00  100.00    0.00    2.31    10   1003.00      0.00 59603216 33594760  17.09      0.00      0.00      0.00       0  qemu-system-x86
-

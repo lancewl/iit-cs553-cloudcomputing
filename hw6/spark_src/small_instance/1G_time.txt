@@ -1,0 +1,151 @@
+2020-04-26 05:36:31,446 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2020-04-26 05:36:31,502 INFO client.RMProxy: Connecting to ResourceManager at /192.168.122.238:8032
+2020-04-26 05:36:31,787 INFO yarn.Client: Requesting a new application from cluster with 1 NodeManagers
+2020-04-26 05:36:31,854 INFO conf.Configuration: resource-types.xml not found
+2020-04-26 05:36:31,854 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2020-04-26 05:36:31,869 INFO yarn.Client: Verifying our application has not requested more than the maximum memory capability of the cluster (8192 MB per container)
+2020-04-26 05:36:31,870 INFO yarn.Client: Will allocate AM container, with 4505 MB memory including 409 MB overhead
+2020-04-26 05:36:31,870 INFO yarn.Client: Setting up container launch context for our AM
+2020-04-26 05:36:31,870 INFO yarn.Client: Setting up the launch environment for our AM container
+2020-04-26 05:36:31,878 INFO yarn.Client: Preparing resources for our AM container
+2020-04-26 05:36:32,259 WARN yarn.Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+2020-04-26 05:36:34,244 INFO yarn.Client: Uploading resource file:/tmp/spark-97a79572-ce0d-482c-94ac-35b73721029d/__spark_libs__6236853012748891532.zip -> /exports/projects/sparkstaging/ubuntu/.sparkStaging/application_1587868450824_0009/__spark_libs__6236853012748891532.zip
+2020-04-26 05:36:36,447 INFO yarn.Client: Uploading resource file:/home/ubuntu/team-25/hw6/spark_src/SparkSort.jar -> /exports/projects/sparkstaging/ubuntu/.sparkStaging/application_1587868450824_0009/SparkSort.jar
+2020-04-26 05:36:36,698 INFO yarn.Client: Uploading resource file:/tmp/spark-97a79572-ce0d-482c-94ac-35b73721029d/__spark_conf__1599173966466446148.zip -> /exports/projects/sparkstaging/ubuntu/.sparkStaging/application_1587868450824_0009/__spark_conf__.zip
+2020-04-26 05:36:36,758 INFO spark.SecurityManager: Changing view acls to: ubuntu
+2020-04-26 05:36:36,759 INFO spark.SecurityManager: Changing modify acls to: ubuntu
+2020-04-26 05:36:36,759 INFO spark.SecurityManager: Changing view acls groups to: 
+2020-04-26 05:36:36,760 INFO spark.SecurityManager: Changing modify acls groups to: 
+2020-04-26 05:36:36,760 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(ubuntu); groups with view permissions: Set(); users  with modify permissions: Set(ubuntu); groups with modify permissions: Set()
+2020-04-26 05:36:36,813 INFO yarn.Client: Submitting application application_1587868450824_0009 to ResourceManager
+2020-04-26 05:36:36,873 INFO impl.YarnClientImpl: Submitted application application_1587868450824_0009
+2020-04-26 05:36:37,882 INFO yarn.Client: Application report for application_1587868450824_0009 (state: ACCEPTED)
+2020-04-26 05:36:37,888 INFO yarn.Client: 
+	 client token: N/A
+	 diagnostics: AM container is launched, waiting for AM container to Register with RM
+	 ApplicationMaster host: N/A
+	 ApplicationMaster RPC port: -1
+	 queue: default
+	 start time: 1587879396826
+	 final status: UNDEFINED
+	 tracking URL: http://ubuntu.local:8088/proxy/application_1587868450824_0009/
+	 user: ubuntu
+2020-04-26 05:36:38,893 INFO yarn.Client: Application report for application_1587868450824_0009 (state: ACCEPTED)
+2020-04-26 05:36:39,896 INFO yarn.Client: Application report for application_1587868450824_0009 (state: ACCEPTED)
+2020-04-26 05:36:40,898 INFO yarn.Client: Application report for application_1587868450824_0009 (state: ACCEPTED)
+2020-04-26 05:36:41,903 INFO yarn.Client: Application report for application_1587868450824_0009 (state: ACCEPTED)
+2020-04-26 05:36:42,905 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:42,906 INFO yarn.Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ubuntu.local
+	 ApplicationMaster RPC port: 33621
+	 queue: default
+	 start time: 1587879396826
+	 final status: UNDEFINED
+	 tracking URL: http://ubuntu.local:8088/proxy/application_1587868450824_0009/
+	 user: ubuntu
+2020-04-26 05:36:43,909 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:44,912 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:45,915 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:46,918 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:47,922 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:48,925 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:49,928 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:50,931 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:51,936 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:52,940 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:53,943 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:54,946 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:55,949 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:56,952 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:57,956 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:58,959 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:36:59,962 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:00,966 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:01,970 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:02,973 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:03,977 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:04,980 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:05,983 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:06,987 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:07,990 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:08,994 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:09,997 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:11,000 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:12,003 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:13,005 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:14,006 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:15,010 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:16,013 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:17,017 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:18,020 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:19,025 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:20,027 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:21,033 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:22,036 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:23,044 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:24,048 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:25,050 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:26,053 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:27,055 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:28,057 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:29,059 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:30,062 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:31,065 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:32,068 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:33,069 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:34,072 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:35,075 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:36,077 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:37,085 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:38,088 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:39,090 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:40,093 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:41,096 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:42,100 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:43,105 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:44,107 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:45,109 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:46,112 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:47,114 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:48,116 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:49,120 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:50,121 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:51,124 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:52,126 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:53,129 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:54,132 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:55,135 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:56,139 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:57,142 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:58,145 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:37:59,148 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:00,150 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:01,153 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:02,155 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:03,158 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:04,161 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:05,163 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:06,166 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:07,168 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:08,170 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:09,173 INFO yarn.Client: Application report for application_1587868450824_0009 (state: RUNNING)
+2020-04-26 05:38:10,176 INFO yarn.Client: Application report for application_1587868450824_0009 (state: FINISHED)
+2020-04-26 05:38:10,178 INFO yarn.Client: 
+	 client token: N/A
+	 diagnostics: N/A
+	 ApplicationMaster host: ubuntu.local
+	 ApplicationMaster RPC port: 33621
+	 queue: default
+	 start time: 1587879396826
+	 final status: SUCCEEDED
+	 tracking URL: http://ubuntu.local:8088/proxy/application_1587868450824_0009/
+	 user: ubuntu
+2020-04-26 05:38:10,202 INFO util.ShutdownHookManager: Shutdown hook called
+2020-04-26 05:38:10,204 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-b3cd4844-45a0-4f0f-b398-167a3473b11c
+2020-04-26 05:38:10,209 INFO util.ShutdownHookManager: Deleting directory /tmp/spark-97a79572-ce0d-482c-94ac-35b73721029d
+
+real	1m40.434s
+user	0m8.894s
+sys	0m1.885s

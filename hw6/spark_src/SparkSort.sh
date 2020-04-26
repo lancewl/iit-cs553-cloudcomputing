@@ -26,3 +26,4 @@ valsort sort.out
 echo "Cleaning dataset..."
 $HADOOP_HOME/bin/hadoop fs -rm /home/input/gs.out
 $HADOOP_HOME/bin/hadoop fs -rmr /home/output/data.out
+rm sort.out

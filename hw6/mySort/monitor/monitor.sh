@@ -8,7 +8,7 @@ fi
 
 if [ $1 -eq 0 ]
 then
-    SORT='./mySort gs.out $3'
+    SORT="./mySort gs.out $3"
     OUT="monitor/mySort_$2G_mon"
 elif [ $1 -eq 1 ]
 then

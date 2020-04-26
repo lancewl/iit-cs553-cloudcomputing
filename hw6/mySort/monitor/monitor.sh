@@ -1,14 +1,14 @@
 #!/bin/bash
  
-if [ $# -ne 2 ]
+if [ $# -ne 3 ]
 then
-    echo "Usage: mySort_mon.sh [0 mySort | 1 Linux Sort] [dataset size in GB]"
+    echo "Usage: mySort_mon.sh [0 mySort | 1 Linux Sort] [dataset size in GB] [memory size for sorting in GB]"
     exit
 fi
 
 if [ $1 -eq 0 ]
 then
-    SORT='./mySort gs.out 8'
+    SORT='./mySort gs.out $3'
     OUT="monitor/mySort_$2G_mon"
 elif [ $1 -eq 1 ]
 then

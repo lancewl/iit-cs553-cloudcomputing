@@ -6,8 +6,8 @@ public class SparkSort {
  	public static void main(String[] args) {
 		SparkConf sparkConf = new SparkConf().setAppName("SparkSort");
 		JavaSparkContext sparkContext = new JavaSparkContext(sparkConf);
-		String in = "hdfs://192.168.122.147:9000/home/input/gs.out";
-		String out = "hdfs://192.168.122.147:9000/home/output/data.out";
+		String in = "hdfs://192.168.122.238:9000/home/input/gs.out";
+		String out = "hdfs://192.168.122.238:9000/home/output/data.out";
 		JavaRDD<String> textFile = sparkContext.textFile(in);
 		JavaPairRDD<String, Integer> sort = textFile
 			.flatMap(s -> Arrays.asList(s).iterator()) 

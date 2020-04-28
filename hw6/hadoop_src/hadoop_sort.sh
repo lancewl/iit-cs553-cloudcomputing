@@ -1,6 +1,6 @@
 #!/bin/bash
 # Execute this script from the hw6 directory so relative paths works well.
-# ~/.../team-25/hw6 $./hadoop_src/hadoop_sort.sh
+# ~/.../team-25/hw6 $./hadoop_src/hadoop_sort.sh [expsize]
 ################################
 # hadoop_sort.sh
 # run this script to sort a local file using hadoop

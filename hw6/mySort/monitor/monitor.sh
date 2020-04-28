@@ -2,7 +2,7 @@
  
 if [ $# -ne 3 ]
 then
-    echo "Usage: mySort_mon.sh [0 mySort | 1 Linux Sort] [dataset size in GB] [memory size for sorting in GB]"
+    echo "Usage: monotor.sh [0 mySort | 1 Linux Sort] [dataset size in GB] [memory size for sorting in GB]"
     exit
 fi
 
